@@ -1,0 +1,5 @@
+@prefix : <https://ruben.verborgh.org/profile/#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+:me a foaf:Person;
+    foaf:name  "Ruben Verborgh"@en.

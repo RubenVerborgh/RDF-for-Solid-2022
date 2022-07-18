@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker run --rm -v "$PWD:/sparql" -p 3000:4000 sparql/quick-endpoint -- "$@"

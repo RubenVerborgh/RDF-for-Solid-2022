@@ -665,6 +665,363 @@ dbr:Tim_Berners-Lee schema:givenName "Tim";
     </ul>
   </div>
 
+  <div class="slide" id="rdfs-vocabulary">
+    <h2>
+      <a href="https://www.w3.org/TR/rdf-schema/">RDF Schema</a> is an RDF vocabulary<br>
+      to model RDF vocabularies.
+    </h2>
+    <ul>
+      <li class="next">
+        RDFS defines classes, properties, and datatypes<br>
+        that are used to define vocabularies.
+        <ul>
+          <li class="next">
+            The RDFS vocabulary has a <a href="https://www.w3.org/TR/rdf-schema/">human-readable specification</a>.
+          </li>
+          <li class="next">
+            It also has a <a href="https://www.w3.org/1999/02/22-rdf-syntax-ns#">machine-readable</a> <a href="https://www.w3.org/2000/01/rdf-schema#">vocabularies</a>,<br>
+            which define RDFS in terms of RDFS.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        RDFS defines concepts in two namespaces.
+        <ul>
+          <li><code>rdf</code>: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><em>http://www.w3.org/1999/02/22-rdf-syntax-ns#</em></a></li>
+          <li><code>rdfs</code>: <a href="http://www.w3.org/2000/01/rdf-schema#"><em>http://www.w3.org/2000/01/rdf-schema#</em></a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="rdfs-overview">
+    <h2>
+      RDFS defines the basic building blocks<br>
+      to construct RDF vocabularies.
+    </h2>
+    <ul>
+      <li class="next">
+        describing resources
+        <ul class="inline">
+          <li><code>rdfs:label</code></li>
+          <li><code>rdfs:comment</code></li>
+          <li><code>rdfs:seeAlso</code></li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li class="next">
+        describing classes
+        <ul class="inline">
+          <li><code>rdf:type</code></li>
+          <li><code>rdfs:Resource</code></li>
+          <li><code>rdfs:Class</code></li>
+          <li><code>rdfs:Literal</code></li>
+          <li><code>rdf:Property</code></li>
+          <li><code>rdfs:subClassOf</code></li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li class="next">
+        describing properties
+        <ul class="inline">
+          <li><code>rdfs:domain</code></li>
+          <li><code>rdfs:range</code></li>
+          <li><code>rdfs:subPropertyOf</code></li>
+          <li>…</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="rdfs-label">
+    <h2>
+      <a href="https://www.w3.org/TR/rdf-schema/#ch_label"><code>rdfs:label</code></a> is a <a href="#rdf-property">property</a> that gives<br>
+      a human-readable name to a resource.
+    </h2>
+    <ul>
+      <li>
+        Resources typically have ≤ 1 label per language.
+        <ul>
+          <li>However, <code>rdfs:label</code> is <em>not</em> a <a href="#functional-properties">functional property</a>.</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+
+foaf:knows <strong>rdfs:label</strong> "knows"@en, "kent"@nl, "connaît"@fr.
+
+<strong>rdfs:label</strong> <strong>rdfs:label</strong> "label"@en.</code></pre>
+  </div>
+
+  <div class="slide" id="rdf-type">
+    <h2>
+      <a href="https://www.w3.org/TR/rdf-schema/#ch_type"><code>rdf:type</code></a> is a <a href="#rdf-property">property</a> stating that<br>
+      a <a href="#rdfs-resource">resource</a> is an instance of a <a href="#rdfs-class">class</a>.
+    </h2>
+    <ul>
+      <li>
+        Resources can (and do) have multiple classes.
+        <ul>
+          <li>Just because a class is <a href="#open-world">not mentioned</a> in a context<br>
+              does not mean a resource isn’t an instance of it.</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
+&lt;#me&gt; <strong>rdf:type</strong> foaf:Person.
+<strong>rdf:type</strong> <strong>rdf:type</strong> rdf:Property.
+<span class="comment"># <a href="#turtle">Turtle</a> and <a href="#trig">TriG</a> allow <em>a</em> in predicate position.</span>
+&lt;#me&gt; a foaf:Person.
+<strong>rdf:type</strong> a rdf:Property.</code></pre>
+  </div>
+
+    <div class="slide" id="rdfs-subclassof">
+    <h2>
+      <a href="https://www.w3.org/TR/rdf-schema/#ch_subclassof"><code>rdfs:subClassOf</code></a> is a <a href="#rdf-property">property</a> stating<br>
+      all members of a class belong to another.
+    </h2>
+    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
+&lt;#ComputerScientist&gt; a rdfs:Class.
+foaf:Person a rdfs:Class.
+rdfs:Resource a rdfs:Class.
+rdfs:Class a rdfs:Class.
+
+&lt;#ComputerScientist&gt; <strong>rdfs:subClassOf</strong> foaf:Person.
+foaf:Person <strong>rdfs:subClassOf</strong> foaf:Agent.
+foaf:Person <strong>rdfs:subClassOf</strong> rdfs:Resource.
+rdfs:Class <strong>rdfs:subClassOf</strong> rdfs:Resource.
+</code></pre>
+  </div>
+
+  <div class="slide" id="rdfs-domain">
+    <h2>
+      <a href="https://www.w3.org/TR/rdf-schema/#ch_domain"><code>rdfs:domain</code></a> is a <a href="#rdf-property">property</a> that states<br>
+      the class of possible subjects of a property.
+    </h2>
+    <ul>
+      <li>
+        Properties can have multiple domain restrictions.
+        <ul>
+          <li>Subjects need to satisfy <em>all</em> of them.</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
+foaf:img <strong>rdfs:domain</strong> foaf:Person.
+foaf:img <strong>rdfs:domain</strong> foaf:Resource.
+rdf:type <strong>rdfs:domain</strong> rdfs:Resource.
+
+<strong>rdfs:domain</strong> <strong>rdfs:domain</strong> rdf:Property.
+</code></pre>
+  </div>
+
+  <div class="slide" id="rdfs-range">
+    <h2>
+      <a href="https://www.w3.org/TR/rdf-schema/#ch_range"><code>rdfs:range</code></a> is a <a href="#rdf-property">property</a> that states<br>
+      the class of possible objects of a property.
+    </h2>
+    <ul>
+      <li>
+        Properties can have multiple range restrictions.
+        <ul>
+          <li>Objects need to satisfy <em>all</em> of them.</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
+foaf:img <strong>rdfs:range</strong> foaf:Image.
+foaf:img <strong>rdfs:range</strong> foaf:Resource.
+rdf:type <strong>rdfs:range</strong> rdfs:Class.
+rdf:type <strong>rdfs:range</strong> rdfs:Resource.
+
+<strong>rdfs:range</strong> <strong>rdfs:range</strong> rdfs:Class.
+</code></pre>
+  </div>
+
+  <div class="slide" id="rdfs-subpropertyof">
+    <h2>
+      <a href="https://www.w3.org/TR/rdf-schema/#ch_subpropertyof"><code>rdfs:subPropertyOf</code></a> is a <a href="#rdf-property">property</a> stating<br>
+      a property is more specific than another.
+    </h2>
+    <ul>
+      <li>
+        If the subproperty holds for a subject and object,<br>
+        the less specific property also holds.
+      </li>
+    </ul>
+    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
+&lt;#hasFriend&gt; <strong>rdfs:subPropertyOf</strong> foaf:knows.
+rdfs:range <strong>rdfs:subPropertyOf</strong> rdfs:seeAlso.
+rdfs:domain <strong>rdfs:subPropertyOf</strong> rdfs:seeAlso.
+</code></pre>
+  </div>
+
+  <div class="slide" id="rdfs-understanding">
+    <h2>
+      Knowledge of RDFS will help you<br>
+      understand most vocabularies.
+    </h2>
+    <p>
+      In particular, read the following vocabularies:
+    </p>
+    <ul>
+      <li><a href="https://www.w3.org/1999/02/22-rdf-syntax-ns#">the RDF vocabulary</a></li>
+      <li><a href="https://www.w3.org/2000/01/rdf-schema#">the RDFS vocabulary</a></li>
+      <li>
+        <a href="http://xmlns.com/foaf/spec/index.rdf">the FOAF vocabulary</a>
+        <ul>
+          <li><a href="assets/foaf.ttl">Turtle version</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="owl-concepts">
+    <h2>
+      The <a href="https://www.w3.org/TR/owl2-overview/">Web Ontology Language (OWL)</a>
+      provides concepts for detailed ontologies.
+    </h2>
+    <ul>
+      <li>
+        <a href="#rdfs-vocabulary">RDFS</a> captures basic ontological relations,<br>
+        but lacks several common and important concepts.
+        <ul>
+          <li class="next">cardinality restrictions on properties</li>
+          <li class="next">inverse, symmetric, and transitive properties</li>
+          <li class="next">equality and disjointness</li>
+          <li class="next">…</li>
+        </ul>
+      </li>
+      <li class="next">
+        OWL extends RDFS with advanced concepts.
+        <ul>
+          <li>RDFS and OWL are used side by side.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="owl-overview">
+    <h2>
+      OWL defines additional constraints<br>
+      for individuals, properties, and classes.
+    </h2>
+    <ul>
+      <li class="next">
+        restrictions on individuals
+        <ul class="inline">
+          <li><code>owl:sameAs</code></li>
+          <li><code>owl:differentFrom</code></li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li class="next">
+        restrictions on properties
+        <ul class="inline">
+          <li><code>owl:ObjectProperty</code></li>
+          <li><code>owl:inverseOf</code></li>
+          <li><code>owl:FunctionalProperty</code></li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li class="next">
+        restrictions on classes
+        <ul class="inline">
+          <li><code>owl:intersectionOf</code></li>
+          <li><code>owl:Restriction</code></li>
+          <li>…</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="literal-object-properties">
+    <h2>
+      Typical properties can either take<br>
+      a literal or a named node as object.
+    </h2>
+    <ul>
+      <li class="next">
+        Properties taking only literal values as object<br>
+        are instances of
+        <a href="https://www.w3.org/TR/owl2-primer/#Entity_Declarations"><code>owl:DataTypeProperty</code></a>.
+        <ul>
+          <li><code>foaf:givenName a <strong>owl:DataTypeProperty</strong>.</code></li>
+          <li><code>foaf:givenName rdfs:range rdfs:Literal.</code></li>
+        </ul>
+      </li>
+      <li class="next">
+        Properties taking only non-literal values as object<br>
+        are instances of
+        <a href="https://www.w3.org/TR/owl2-primer/#Entity_Declarations"><code>owl:ObjectProperty</code></a>.
+        <ul>
+          <li><code>foaf:knows a <strong>owl:ObjectProperty</strong>.</code></li>
+          <li><code>foaf:knows rdfs:range _:NonLiterals.</code></li>
+          <li><code>_:NonLiterals owl:complementOf rdfs:Literal.</code></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="inverse-properties">
+    <h2>
+      Inverse properties express a triple<br>
+      in the opposite direction.
+    </h2>
+    <ul>
+      <li>
+        One property is the <a href="https://www.w3.org/TR/owl2-primer/#Property_Characteristics"><code>owl:inverseOf</code></a> another<br>
+        if it asserts the same relation from object to subject.
+        <ul>
+          <li class="next"><code>ex:TimBL <strong>foaf:made</strong> dbr:World_Wide_Web.</code></li>
+          <li class="next"><code>dbr:World_Wide_Web <strong>foaf:maker</strong> ex:TimBL.</code></li>
+          <li class="next"><code>foaf:made <strong>owl:inverseOf</strong> foaf:maker</code></li>
+        </ul>
+      </li>
+      <li class="next">
+        Ontologists typically pick <em>one</em> property direction.
+        <ul>
+          <li>Different ontologies might choose different directions.</li>
+          <li><code>owl:inverseOf</code> allows to connect such properties.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="functional-properties">
+    <h2>
+      A functional property restricts the objects<br>
+      for a given subject to be identical.
+    </h2>
+    <ul>
+      <li>
+        If any subject can at most have one unique value<br>
+        for some property, it’s an <a href="https://www.w3.org/TR/owl-ref/#FunctionalProperty-def"><code>owl:FunctionalProperty</code></a>.
+        <ul>
+          <li><code>ex:Julia ex:hasSpouse ex:Cathy.</code></li>
+          <li><code>ex:hasSpouse a <strong>owl:FunctionalProperty</strong>.</code></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tight quiz slide" id="functional-properties-effects">
+    <h2>
+      Functional properties have strong effects,<br>
+      so you have to understand them well.
+    </h2>
+    <p>What is the logical consequence of the following?</p>
+    <pre><code>ex:Julia ex:hasSpouse ex:Cathy.
+ex:Julia ex:hasSpouse ex:John.
+ex:hasSpouse a owl:FunctionalProperty.</code></pre>
+    <p class="next">It might be counterintuitive, but the conclusion is:</p>
+    <pre class="next"><code>ex:Cathy owl:sameAs ex:John.</code></pre>
+    <p class="next">To arrive at a contradiction, <a href="#individual-equality">explicitly define inequality</a>:</p>
+    <pre class="next"><code>ex:Cathy owl:differentFrom ex:John.</code></pre>
+  </div>
+
   <div class="toc slide" id="toc-querying">
     <ul>
       <li><a href="#toc-rdf">RDF &amp; Solid</a></li>

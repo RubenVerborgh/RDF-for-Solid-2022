@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+trap exit SIGTERM SIGINT SIGQUIT SIGHUP ERR
+
+# Use a reverse proxy because Fuseki only accepts connections from localhost
+socat TCP-LISTEN:4000,fork TCP:localhost:3000 &
+PID_PROXY=$!
+java -jar /quick-sparql-endpoint.jar "$@" &
+PID_ENDPOINT=$!
+wait $PID_ENDPOINT

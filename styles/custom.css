@@ -65,3 +65,7 @@ iframe.image {
 del {
   text-decoration: var(--accent) .08em line-through;
 }
+
+.slide.tight p {
+  margin-bottom: 0px;
+}
