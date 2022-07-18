@@ -16,3 +16,14 @@
   font-weight: normal;
   line-height: 1.3;
 }
+
+blockquote p {
+  font-size: 1.5em;
+  line-height: 1.25;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+blockquote:first-child p {
+  margin-top: 2.5em;
+}
