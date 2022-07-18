@@ -23,17 +23,13 @@
 blockquote > p {
   font-weight: bold;
   font-style: italic;
+  color: var(--accent);
 }
 .slide:not(.full) > blockquote:first-child {
-  padding-top: 145px;
+  padding-top: 120px;
 }
 .slide blockquote::before {
-  top: 140px;
-}
-
-blockquote p {
-  font-weight: bold;
-  color: var(--accent);
+  margin: 55px 0 0 -140px;
 }
 
 #simplify-complexify blockquote p {
@@ -64,4 +60,8 @@ iframe.image {
   background: red;
   color: white;
   font-weight: bold;
+}
+
+del {
+  text-decoration: var(--accent) .08em line-through;
 }
