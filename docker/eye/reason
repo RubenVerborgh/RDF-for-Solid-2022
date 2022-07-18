@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+LOG=/tmp/eye.log
+FLAGS="--quiet --nope --pass $@"
+docker run --rm -v "$PWD:/eye" eye/eye -- $FLAGS 2>$LOG || cat $LOG >&2 && exit 1
