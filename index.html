@@ -24,7 +24,7 @@
     <p class="author">Ruben Verborgh</p>
   </div>
 
-  <div class="text slide" id="quote">
+  <div class="text slide" id="simplify-complexify">
     <blockquote>
       <p>
         In order to simplify,<br>
@@ -52,6 +52,508 @@
     </ul>
   </div>
 
+  <div class="slide" id="making-links">
+    <blockquote>
+      <p>
+        The Semantic Web isn’t just about putting data on the Web.
+        <span class="next">It is about making links,
+        so that a person or machine can explore the Web of Data.</span>
+      </p>
+      <p>
+        <span class="next">With Linked Data, when you have some of it,<br>
+        you can find other, related, data.</span>
+      </p>
+      <cite><a href="https://www.w3.org/DesignIssues/LinkedData.html">Tim Berners-Lee</a></cite>
+    </blockquote>
+  </div>
+
+  <div class="slide" id="linked-data-reuse">
+    <h2>
+      An immense amount of Linked Data<br>
+      is available on the Web for reuse.
+    </h2>
+    <ul>
+      <li>
+        On the <em>structural</em> level, <a href="https://lov.linkeddata.es/dataset/lov/">hundreds of vocabularies</a><br>
+        can provide the building blocks to model your data.
+        <ul>
+          <li class="next">
+            They provide <a href="#rdf-property">properties</a>
+            and <a href="#rdfs-class">classes</a> to reuse.
+          </li>
+          <li class="next">
+            Although not always counted as Linked Data<br>
+            because of their small size, most follow all 4 principles.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        On the <em>content</em> level, <a href="https://datahub.io/">thousands of datasets</a><br>
+        provide identifiers and data of <a href="#rdfs-resource">individuals</a>.
+        <ul>
+          <li>Strive to reuse identifiers rather than to mint new ones.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="open-world">
+    <h2>
+      No Linked Data set is ever complete.<br>
+      We make the <em>open-world</em> assumption.
+    </h2>
+    <ul>
+      <li class="next">
+        Relational databases use highly rigid structures.<br>
+        They strive for complete data.
+        <ul>
+          <li>
+            A <code>NULL</code> value can signal missing data,<br>
+            but this is typically an undesired situation.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        With Linked Data, no source has all of the truth.<br>
+        Other sources <em>might</em> have more data on a subject.
+        <ul>
+          <li class="next">The absence of a fact does <em>not</em> imply its falsehood.</li>
+          <li class="next">A fact has 2 possible states: <em>true</em> and <em>unknown</em>.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="rdf-model">
+    <h2>
+      The <a href="https://www.w3.org/RDF/">Resource Description Framework</a> is<br>
+      a model for data interchange on the Web.
+    </h2>
+    <ul>
+      <li class="next">
+        RDF is a standardized way to represent Linked Data.
+      </li>
+      <li class="next">
+        The <a href="https://www.w3.org/TR/rdf11-concepts/">RDF model</a>
+        defines RDF datasets.
+        <ul>
+          <li class="next">
+            An <a href="#dataset">RDF dataset</a>
+            has a <em>default graph</em> and ≥ 0 <em>named graphs</em>.
+          </li>
+          <li class="next">
+            An <a href="#graph">RDF graph</a>
+            is a set of RDF triples.
+          </li>
+          <li class="next">
+            An <a href="#triple">RDF triple</a>
+            consists of a subject, predicate, and object.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        RDF has different concrete syntaxes.
+        <ul class="inline">
+          <li>triple-based</li>
+          <li>JSON-based</li>
+          <li>XML-based</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="quiz slide" id="which-rdf-syntaxes">
+    <h2>
+      How many syntaxes for RDF exist?<br>
+      Which one(s)?
+    </h2>
+  </div>
+
+  <div class="slide" id="rdf-syntaxes">
+    <h2>
+      Several standard syntaxes for RDF exist.<br>
+      Some of them have multi-graph support.
+    </h2>
+    <ul>
+      <li>
+        independent syntaxes
+        <dl>
+          <dt>triple-based</dt>
+          <dd><a href="#ntriples">N-Triples</a></dd>
+          <dd><a href="#turtle">Turtle</a></dd>
+          <dd><a href="#nquads">N-Quads</a></dd>
+          <dd><a href="#trig">TriG</a></dd>
+
+          <dt>JSON-based</dt>
+          <dd><a href="#jsonld">JSON-LD</a></dd>
+
+          <dt>XML-based</dt>
+          <dd><a href="#rdfxml">RDF/XML</a></dd>
+        </dl>
+      </li>
+      <li>
+        embeddable syntaxes
+        <dl>
+          <dt>for HTML/XML</dt>
+          <dd><a href="#rdfa">RDFa</a></dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="ntriples">
+    <h2>
+      <a href="https://www.w3.org/TR/n-triples/">N-Triples</a> is a line-based syntax<br>
+      supporting only a default graph.
+    </h2>
+    <pre class="scroll"><code><span class="comment"># Every non-empty line represents a triple or comment.</span>
+<span class="comment"># IRIs are enclosed in angular brackets (&lt; and &gt;).</span>
+&lt;http://dbpedia.org/resource/Tim_Berners-Lee&gt; &lt;http://xmlns.com/foaf/0.1/knows&gt; &lt;http://dbpedia.org/resource/Ted_Nelson&gt;.
+<span class="comment"># Literals are enclosed in double quotation marks (")</span>
+<span class="comment"># and optionally end with @ and a <a href="https://tools.ietf.org/html/bcp47">language tag</a>.</span>
+&lt;http://dbpedia.org/resource/Tim_Berners-Lee&gt; &lt;http://xmlns.com/foaf/0.1/givenName&gt; "Tim"@en.
+<span class="comment"># Alternatively, they end with ^^ and a datatype IRI.</span>
+&lt;http://dbpedia.org/resource/Tim_Berners-Lee&gt; &lt;http://dbpedia.org/ontology/birthDate&gt; "1955-06-08"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt;.</code></pre>
+  </div>
+
+  <div class="slide" id="turtle">
+    <h2>
+      <a href="https://www.w3.org/TR/turtle/">Turtle</a> is a superset of N-Triples<br>
+      with prefixes and abbreviations.
+    </h2>
+    <pre><code><span class="comment"># Declare prefixes before use (hint: <a href="https://prefix.cc/">prefix.cc</a>).</span>
+PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+<span class="comment"># The predicate a abbreviates <a href="#rdf-type">rdf:type</a>.</span>
+<span class="comment"># A semi-colon ; reuses the subject.</span>
+<span class="comment"># A comma , reuses the subject and predicate.</span>
+dbr:Tim_Berners-Lee a foaf:Person;
+                    foaf:knows dbr:Ted_Nelson,
+                               dbr:Wendy_Hall.
+<span class="comment"># There are 3 triples above.</span></code></pre>
+  </div>
+
+  <div class="slide" id="turtle-blank-nodes">
+    <h2>
+      <a href="#turtle">Turtle</a> includes syntactic sugar<br>
+      to write blank nodes.
+    </h2>
+    <pre><code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+<span class="comment"># The following lines all state something is named Tim.</span>
+<strong>_:x235</strong> foaf:name "Tim"@en.  <span class="comment"># blank node label</span>
+<strong>[]</strong> foaf:name "Tim"@en.      <span class="comment"># empty blank node</span>
+<strong>[</strong> foaf:name "Tim"@en <strong>]</strong>.     <span class="comment"># blank node with properties</span>
+<span class="comment"># Something named Tim knows something named Wendy.</span>
+<strong>[</strong> foaf:name "Tim"@en <strong>]</strong> foaf:knows <strong>[</strong> foaf:name "Wendy"@en <strong>]</strong>.
+
+<span class="comment"># The label-based syntax allows cross-references within</span>
+<span class="comment"># the same document, and is also supported in <a href="#ntriples">N-Triples</a>.</span></code></pre>
+  </div>
+
+  <div class="slide" id="turtle-lists">
+    <h2>
+      <a href="#turtle">Turtle</a> includes syntactic sugar<br>
+      to write (head/tail) lists.
+    </h2>
+    <pre class="scroll"><code>PREFIX ex: &lt;http://example.org/&gt;
+<span class="comment"># Note also a shorthand for writing numbers.</span>
+ex:MyLottery ex:luckyNumbers <strong>(5 14 15)</strong>.
+<span class="comment"># This corresponds to:</span>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+ex:MyLottery ex:luckyNumbers _:list1.
+_:list1 rdf:first "5"^^xsd:integer
+_:list1 rdf:next  _:list2.
+_:list2 rdf:first "14"^^xsd:integer
+_:list2 rdf:next  _:list3.
+_:list3 rdf:first "15"^^xsd:integer
+_:list3 rdf:next  rdf:nil.</code></pre>
+  </div>
+
+  <div class="slide" id="nquads">
+    <h2>
+      <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> is a superset of <a href="#ntriples">N-Triples</a><br>
+      with support for named graphs.
+    </h2>
+    <pre><code><span class="comment"># Triples in the default graph look like N-Triples.</span>
+&lt;urn:ex:s1&gt; &lt;urn:ex:p1&gt; &lt;urn:ex:o1&gt;.
+&lt;urn:ex:s1&gt; &lt;urn:ex:p2&gt; "abc".
+
+<span class="comment"># Triples in named graphs have a fourth element.</span>
+&lt;urn:ex:s2&gt; &lt;urn:ex:p1&gt; &lt;urn:ex:o2&gt; <strong>&lt;urn:ex:GraphA&gt;</strong>.
+&lt;urn:ex:s2&gt; &lt;urn:ex:p2&gt; "xyz" <strong>&lt;urn:ex:GraphB&gt;</strong>.
+</code></pre>
+  </div>
+
+  <div class="slide" id="trig">
+    <h2>
+      <a href="https://www.w3.org/TR/trig/">TriG</a> is a superset of <a href="#turtle">Turtle</a>
+      (<em>not</em> <a href="#nquads">N-Quads</a>)<br>
+      with support for named graphs.
+    </h2>
+    <pre><code>PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+<span class="comment"># Triples in the default graph look like Turtle.</span>
+dbr:Tim_Berners-Lee a foaf:Person;
+                    foaf:knows dbr:Ted_Nelson.
+<span class="comment"># Named graphs are indicated by a <a href="https://www.w3.org/TR/trig/#sec-graph-statements">graph statement</a>.</span>
+<strong>&lt;http://example.org/graphs/Fiction&gt; {</strong>
+    dbr:Clark_Kent a foaf:Person;
+                     foaf:nick "Superman"@en.
+<strong>}</strong>
+</code></pre>
+  </div>
+
+  <div class="slide" id="jsonld">
+    <h2>
+      <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a> is a <a href="../architecture/#json">JSON</a> syntax to represent<br>
+       an RDF dataset, supporting named graphs.
+    </h2>
+    <ul>
+      <li>
+        Each document points to a JSON-LD <a href="https://www.w3.org/TR/json-ld/#the-context">context</a>,<br>
+        creating meaning by mapping <a href="https://www.w3.org/TR/json-ld/#dfn-term">JSON terms</a> to <a href="https://www.w3.org/TR/json-ld/#dfn-iri">IRIs</a>.
+        <ul>
+          <li class="next">
+            It is linked either from the JSON document with <code><a href="https://www.w3.org/TR/json-ld/#the-context">@context</a></code>
+          </li>
+          <li class="next">
+            or outside of the document through an <a href="https://www.w3.org/TR/json-ld/#interpreting-json-as-json-ld">HTTP <code>Link</code> header</a>.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        The <code><a href="https://www.w3.org/TR/json-ld/#iris">@id</a></code> keyword
+        points to an identifier<br>
+        for a resource (represented by a JSON object).
+        <ul>
+          <li>
+            This explicitly identifies resources with an IRI<br>
+            (for cases where none was provided by the context).
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="quiz-jsonld">
+    <h2>
+      Is the snippet below JSON-LD?<br>
+      Why (not)?
+    </h2>
+    <p class="todo">TODO</p>
+  </div>
+
+  <div class="slide" id="jsonld-interpretation">
+    <h2>
+      <a href="#jsonld">JSON-LD</a> provides additional interpretation<br>
+      on top of the <a href="https://tools.ietf.org/html/rfc7159">JSON specification</a>.
+    </h2>
+    <ul>
+      <li>
+        A JSON-LD document can be interpreted as<br>
+        a plain JSON document or as RDF graphs &amp; triples.
+        <ul>
+          <li class="next">easy for developers: no RDF awareness needed</li>
+          <li class="next">easy for machines: data has well-defined semantics</li>
+        </ul>
+      </li>
+      <li class="next">
+        To allow for this interpretation,<br>
+        the document must be served correctly.
+        <ul>
+          <li class="next"><code>application/json</code> with HTTP <code>Link</code> context: JSON-LD</li>
+          <li class="next"><code>application/ld+json</code> with <code>@context</code> key: JSON-LD</li>
+          <li class="next">all other JSON documents: <em>not</em> JSON-LD</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="jsonld-example">
+    <h2>
+      JSON-LD documents look almost<br>
+      like regular JSON documents.
+    </h2>
+    <pre class="scroll"><code>{
+  "@context": "http://schema.org/",
+  "@id": "http://dbpedia.org/resource/Tim_Berners-Lee",
+  "givenName": "Tim",
+  "knows": [{
+    "@id": "http://dbpedia.org/resource/Ted_Nelson",
+    "givenName": "Ted"
+  }]
+}</code></pre>
+  </div>
+
+  <div class="slide" id="jsonld-example-json">
+    <h2>
+      JSON-LD documents can be approached<br>
+      like regular JSON documents.
+    </h2>
+    <pre class="scroll"><code>{
+  <span class="comment">"@context": "http://schema.org/",</span>
+  <span class="comment">"@id": "http://dbpedia.org/resource/Tim_Berners-Lee",</span>
+  "givenName": "Tim",
+  "knows": [{
+    <span class="comment">"@id": "http://dbpedia.org/resource/Ted_Nelson",</span>
+    "givenName": "Ted"
+  }]
+}</code></pre>
+  </div>
+
+  <div class="slide" id="jsonld-example-trig">
+    <h2>
+      JSON-LD documents can be approached<br>
+      as RDF triples (or quads).
+    </h2>
+    <pre class="scroll"><code><span class="comment"># These triples are equivalent to the <a href="#jsonld-example">JSON-LD example</a>.</span>
+PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
+PREFIX schema: &lt;http://schema.org&gt;
+
+dbr:Ted_Nelson schema:givenName "Ted".
+dbr:Tim_Berners-Lee schema:givenName "Tim";
+                    schema:knows dbr:Ted_Nelson.</code></pre>
+  </div>
+
+  <div class="slide" id="rdfxml">
+    <h2>
+      The <a href="https://www.w3.org/TR/rdf-syntax-grammar/">XML-based syntax for RDF</a><br>
+      represents triples, but not named graphs.
+    </h2>
+    <pre class="scroll"><code>&lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:schema="http://schema.org/"&gt;
+  &lt;rdf:Description rdf:about="http://dbpedia.org/resource/Ted_Nelson"&gt;
+    &lt;schema:givenName&gt;Ted&lt;/schema:givenName&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about="http://dbpedia.org/resource/Tim_Berners-Lee"&gt;
+    &lt;schema:givenName&gt;Tim&lt;/schema:givenName&gt;
+    &lt;schema:knows rdf:resource="http://dbpedia.org/resource/Ted_Nelson"/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</code></pre>
+  </div>
+
+  <div class="slide" id="rdf-syntaxes-schema">
+    <h2>
+      Choose the right RDF syntax based on<br>
+      graph support and client technology.
+    </h2>
+    <iframe class="image" src="images/rdf-syntaxes.svg"></iframe>
+  </div>
+
+  <div class="slide" id="rdfa">
+    <h2>
+      RDFa allows extending generic HTML<br>
+      and XML documents with RDF triples.
+    </h2>
+    <ul>
+      <li>
+        Instead of performing <a href="../web-apis/#web-representations">content negotiation</a>,<br>
+        RDFa embeds triples inside other formats.
+        <ul>
+          <li>
+            One representation can be interpreted<br>
+            by multiple types of clients.
+          </li>
+        </ul>
+      </li>
+      <li>
+        RDFa extends existing markup with new attributes.
+        <ul>
+          <li><a href="https://www.w3.org/TR/rdfa-core/#A-property"><code>property</code></a></li>
+          <li><a href="https://www.w3.org/TR/rdfa-core/#A-resource"><code>resource</code></a></li>
+          <li><a href="https://www.w3.org/TR/rdfa-core/#A-content"><code>content</code></a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="html-rdfa-example">
+    <h2>
+      This RDFa example interleaves<br>
+      HTML markup with RDF triples.
+    </h2>
+    <pre class="scroll"><code>&lt;div vocab="http://xmlns.com/foaf/0.1/" typeof="Person"&gt;
+  &lt;p&gt;
+    &lt;span property="name"&gt;Alice Birpemswick&lt;/span&gt;,
+    (&lt;a property="mbox" href="mailto:alice@example.com"&gt;alice@example.com&lt;/a&gt;)
+  &lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li property="knows" typeof="Person"&gt;
+      &lt;a property="homepage" href="https://example.com/bob/"&gt;Bob&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li property="knows" typeof="Person" resource="https://example.com/people/#eve"&gt;
+      &lt;span property="name"&gt;Eve&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+
+  <div class="slide" id="html-rdfa-example-turtle">
+    <h2>
+      The extracted RDFa data is regular RDF<br>
+      that can be converted to other formats.
+    </h2>
+    <pre><code>[] a foaf:Person;
+   foaf:name "Alice Birpemswick".
+   foaf:mbox &lt;mailto:alice@example.com&gt;;
+   foaf:knows [ a foaf:Person;
+                foaf:homepage &lt;https://example.com/bob/&gt; ],
+              &lt;https://example.com/people/#eve&gt;;
+
+&lt;https://example.com/people/#eve&gt; a foaf:Person;
+    foaf:name "Eve".
+    </code></pre>
+  </div>
+
+  <div class="slide" id="rdf-on-the-web">
+    <h2>
+      RDF on the Web can be found in webpages<br>
+      and through content negotiation.
+    </h2>
+    <ul>
+      <li>
+        Many pages mark up their data<br>
+        to improve indexing of their content.
+        <ul>
+          <li>
+            The Internet Movie Database marks up movies<br>
+            with <a href="#rdfa">RDFa</a> and <a href="#schema-org">Microdata</a> <em>(<a href="https://www.imdb.com/title/tt0071562/">example</a>)</em>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="../linked-data-publishing/#linked-data-documents">Linked Data documents</a>
+        typically provide<br>
+        multiple RDF representations per resource.
+        <ul>
+          <li>
+            DBpedia pages are available in <a href="#rdfa">HTML + RDF</a>,<br>
+            <a href="#turtle">Turtle</a>,
+            <a href="#jsonld">JSON-LD</a>,
+            and <a href="#rdfxml">RDF/XML</a>
+            <em>(<a href="http://dbpedia.org/resource/The_Godfather_Part_II">example</a>)</em>.
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="task slide" id="task-conneg">
+    <h2>
+      Content negotiation
+    </h2>
+    <p class="todo">TODO</p>
+  </div>
+
+  <div class="quiz slide" id="quiz-jsonld-structure">
+    <h2>
+      What goes wrong in the interaction below
+      and why?
+    </h2>
+    <p class="todo">TODO</p>
+  </div>
+
   <div class="toc slide" id="toc-reasoning">
     <ul>
       <li><a href="#toc-rdf">RDF &amp; Solid</a></li>
@@ -66,6 +568,13 @@
       <li><a href="#toc-reasoning">Reasoning</a></li>
       <li class="current"><a href="#toc-querying">Querying</a></li>
     </ul>
+  </div>
+
+  <div class="question slide" id="graphql-vs-sparql">
+    <h2>
+      What is the difference<br>
+      between GraphQL and SPARQL?
+    </h2>
   </div>
 
   <div class="toc slide" id="recap">

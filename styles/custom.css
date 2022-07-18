@@ -17,13 +17,51 @@
   line-height: 1.3;
 }
 
+
+/* Quotes */
+
+blockquote > p {
+  font-weight: bold;
+  font-style: italic;
+}
+.slide:not(.full) > blockquote:first-child {
+  padding-top: 145px;
+}
+.slide blockquote::before {
+  top: 140px;
+}
+
 blockquote p {
-  font-size: 1.5em;
-  line-height: 1.25;
   font-weight: bold;
   color: var(--accent);
 }
 
-blockquote:first-child p {
-  margin-top: 2.5em;
+#simplify-complexify blockquote p {
+  font-size: 1.5em;
+  line-height: 1.25;
+}
+
+
+/* Code */
+.slide pre {
+  margin-bottom: 38px;
+}
+.slide pre.scroll {
+  max-height: 420px;
+  overflow: scroll;
+}
+
+
+/* Images */
+iframe.image {
+  width: 100%;
+  height: 420px;
+}
+
+
+/* Various */
+.todo {
+  background: red;
+  color: white;
+  font-weight: bold;
 }
