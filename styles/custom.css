@@ -1,0 +1,18 @@
+.shower {
+  --accent: #3a2d72;
+}
+
+.shower .caption h1 {
+  line-height: 1.2;
+}
+
+.shower .title.slide h2 {
+  font-style: italic;
+  font-size: 3em;
+  margin-bottom: 0;
+}
+.shower .title.slide h3 {
+  font-size: 1.6em;
+  font-weight: normal;
+  line-height: 1.3;
+}
