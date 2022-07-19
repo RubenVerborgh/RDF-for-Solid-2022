@@ -62,28 +62,28 @@ iframe.image {
 }
 
 /* Quiz */
+
+
 .quiz.slide h2:before {
-  content: "Pop quiz!";
   background: var(--lighter);
   color: white;
-  opacity: .5;
+  opacity: .3;
+
+  content: "Pop quiz!";
+  font-size: 100px;
+  line-height: 1;
   text-transform: lowercase;
   font-variant: small-caps;
+
   padding: 0 .5em .25em;
+  white-space: pre;
+
   position: absolute;
-  transform: rotate(-35deg);
   left: -60px;
   top: 80px;
   z-index: -100;
-  font-size: 100px;
-  line-height: 1;
+  transform: rotate(-35deg);
 }
-
-.full .quiz.slide h2:before {
-  animation-duration: 1.5s;
-  animation-name: slidein;
-}
-
 
 .quiz.slide h2:only-child {
   font-size: 1.5em;
@@ -97,13 +97,35 @@ iframe.image {
   line-height: 1.5;
 }
 
-@keyframes slidein {
-  from {
-    left: 500px;
-    top: 500px;
-    opacity: 1;
-    transform: rotate(185deg);
+.full .quiz.slide {
+  animation-duration: 1.5s;
+  animation-name: lightning;
+}
+
+.full .quiz.slide h2:before {
+  animation-duration: 1.5s;
+  animation-name: boomerang;
+}
+
+@keyframes lightning {
+  20% {
     background: var(--highlight);
+  }
+  40% {
+    background: white;
+  }
+  60% {
+    background: var(--highlight);
+  }
+}
+
+@keyframes boomerang {
+  from {
+    left: 700px;
+    top: 700px;
+    opacity: 1;
+    transform: rotate(185deg) scale(1.5);
+    background: var(--accent);
   }
 }
 

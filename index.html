@@ -736,20 +736,20 @@ console.log(contacts.knows[0].givenName);</code></pre>
       to model RDF vocabularies.
     </h2>
     <ul>
-      <li class="next">
-        RDFS defines classes, properties, and datatypes<br>
+      <li>
+        RDFS defines <em>classes</em>, <em>properties</em>, and <em>datatypes</em><br>
         that are used to define vocabularies.
         <ul>
-          <li class="next">
+          <li>
             The RDFS vocabulary has a <a href="https://www.w3.org/TR/rdf-schema/">human-readable specification</a>.
           </li>
-          <li class="next">
+          <li>
             It also has a <a href="https://www.w3.org/1999/02/22-rdf-syntax-ns#">machine-readable</a> <a href="https://www.w3.org/2000/01/rdf-schema#">vocabularies</a>,<br>
             which define RDFS in terms of RDFS.
           </li>
         </ul>
       </li>
-      <li class="next">
+      <li>
         RDFS defines concepts in two namespaces.
         <ul>
           <li><code>rdf</code>: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><em>http://www.w3.org/1999/02/22-rdf-syntax-ns#</em></a></li>
@@ -765,7 +765,7 @@ console.log(contacts.knows[0].givenName);</code></pre>
       to construct RDF vocabularies.
     </h2>
     <ul>
-      <li class="next">
+      <li>
         describing resources
         <ul class="inline">
           <li><code>rdfs:label</code></li>
@@ -774,7 +774,7 @@ console.log(contacts.knows[0].givenName);</code></pre>
           <li>…</li>
         </ul>
       </li>
-      <li class="next">
+      <li>
         describing classes
         <ul class="inline">
           <li><code>rdf:type</code></li>
@@ -786,7 +786,7 @@ console.log(contacts.knows[0].givenName);</code></pre>
           <li>…</li>
         </ul>
       </li>
-      <li class="next">
+      <li>
         describing properties
         <ul class="inline">
           <li><code>rdfs:domain</code></li>
@@ -803,14 +803,6 @@ console.log(contacts.knows[0].givenName);</code></pre>
       <a href="https://www.w3.org/TR/rdf-schema/#ch_label"><code>rdfs:label</code></a> is a <a href="#rdf-property">property</a> that gives<br>
       a human-readable name to a resource.
     </h2>
-    <ul>
-      <li>
-        Resources typically have ≤ 1 label per language.
-        <ul>
-          <li>However, <code>rdfs:label</code> is <em>not</em> a <a href="#functional-properties">functional property</a>.</li>
-        </ul>
-      </li>
-    </ul>
     <pre><code>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
@@ -825,19 +817,10 @@ foaf:knows <strong>rdfs:label</strong> "knows"@en, "kent"@nl, "connaît"@fr.
       <a href="https://www.w3.org/TR/rdf-schema/#ch_type"><code>rdf:type</code></a> is a <a href="#rdf-property">property</a> stating that<br>
       a <a href="#rdfs-resource">resource</a> is an instance of a <a href="#rdfs-class">class</a>.
     </h2>
-    <ul>
-      <li>
-        Resources can (and do) have multiple classes.
-        <ul>
-          <li>Just because a class is <a href="#open-world">not mentioned</a> in a context<br>
-              does not mean a resource isn’t an instance of it.</li>
-        </ul>
-      </li>
-    </ul>
-    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
-&lt;#me&gt; <strong>rdf:type</strong> foaf:Person.
+    <pre><code>&lt;#me&gt; <strong>rdf:type</strong> foaf:Person.
 <strong>rdf:type</strong> <strong>rdf:type</strong> rdf:Property.
-<span class="comment"># <a href="#turtle">Turtle</a> and <a href="#trig">TriG</a> allow <em>a</em> in predicate position.</span>
+
+<span class="comment"># <a href="#turtle">Turtle</a> and <a href="#trig">TriG</a> allow <em>a</em> in predicate position</span>
 &lt;#me&gt; a foaf:Person.
 <strong>rdf:type</strong> a rdf:Property.</code></pre>
   </div>
@@ -847,13 +830,12 @@ foaf:knows <strong>rdfs:label</strong> "knows"@en, "kent"@nl, "connaît"@fr.
       <a href="https://www.w3.org/TR/rdf-schema/#ch_subclassof"><code>rdfs:subClassOf</code></a> is a <a href="#rdf-property">property</a> stating<br>
       all members of a class belong to another.
     </h2>
-    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
-&lt;#ComputerScientist&gt; a rdfs:Class.
+    <pre><code>&lt;#Developer&gt; a rdfs:Class.
 foaf:Person a rdfs:Class.
 rdfs:Resource a rdfs:Class.
 rdfs:Class a rdfs:Class.
 
-&lt;#ComputerScientist&gt; <strong>rdfs:subClassOf</strong> foaf:Person.
+&lt;#Developer&gt; <strong>rdfs:subClassOf</strong> foaf:Person.
 foaf:Person <strong>rdfs:subClassOf</strong> foaf:Agent.
 foaf:Person <strong>rdfs:subClassOf</strong> rdfs:Resource.
 rdfs:Class <strong>rdfs:subClassOf</strong> rdfs:Resource.
@@ -873,8 +855,7 @@ rdfs:Class <strong>rdfs:subClassOf</strong> rdfs:Resource.
         </ul>
       </li>
     </ul>
-    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
-foaf:img <strong>rdfs:domain</strong> foaf:Person.
+    <pre><code>foaf:img <strong>rdfs:domain</strong> foaf:Person.
 foaf:img <strong>rdfs:domain</strong> foaf:Resource.
 rdf:type <strong>rdfs:domain</strong> rdfs:Resource.
 
@@ -895,8 +876,7 @@ rdf:type <strong>rdfs:domain</strong> rdfs:Resource.
         </ul>
       </li>
     </ul>
-    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
-foaf:img <strong>rdfs:range</strong> foaf:Image.
+    <pre><code>foaf:img <strong>rdfs:range</strong> foaf:Image.
 foaf:img <strong>rdfs:range</strong> foaf:Resource.
 rdf:type <strong>rdfs:range</strong> rdfs:Class.
 rdf:type <strong>rdfs:range</strong> rdfs:Resource.
@@ -910,14 +890,7 @@ rdf:type <strong>rdfs:range</strong> rdfs:Resource.
       <a href="https://www.w3.org/TR/rdf-schema/#ch_subpropertyof"><code>rdfs:subPropertyOf</code></a> is a <a href="#rdf-property">property</a> stating<br>
       a property is more specific than another.
     </h2>
-    <ul>
-      <li>
-        If the subproperty holds for a subject and object,<br>
-        the less specific property also holds.
-      </li>
-    </ul>
-    <pre><code><span class="comment"># <a href="#rdfs-label">rdf, rdfs, and foaf prefixes</a> omitted for brevity</span>
-&lt;#hasFriend&gt; <strong>rdfs:subPropertyOf</strong> foaf:knows.
+    <pre><code>&lt;#hasFriend&gt; <strong>rdfs:subPropertyOf</strong> foaf:knows.
 rdfs:range <strong>rdfs:subPropertyOf</strong> rdfs:seeAlso.
 rdfs:domain <strong>rdfs:subPropertyOf</strong> rdfs:seeAlso.
 </code></pre>
@@ -940,7 +913,7 @@ rdfs:domain <strong>rdfs:subPropertyOf</strong> rdfs:seeAlso.
     <p>
       For example, the presence of
     </p>
-    <pre class="next"><code>&lt;#Tim&gt; foaf:knows &lt;#Wendy&gt;.
+    <pre><code>&lt;#Tim&gt; foaf:knows &lt;#Wendy&gt;.
 foaf:knows rdfs:domain foaf:Person.</code></pre>
     <p>
       will result in an extra triple
@@ -950,11 +923,11 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
 
   <div class="slide" id="rdfs-understanding">
     <h2>
-      Knowledge of RDFS will help you<br>
-      understand most vocabularies.
+      Knowledge of RDFS is all you need<br>
+      to understand most vocabularies.
     </h2>
     <p>
-      In particular, read the following vocabularies:
+      To get started, try reading these vocabularies:
     </p>
     <ul>
       <li><a href="https://www.w3.org/1999/02/22-rdf-syntax-ns#">the RDF vocabulary</a></li>
@@ -978,13 +951,13 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
         <a href="#rdfs-vocabulary">RDFS</a> captures basic ontological relations,<br>
         but lacks several common and important concepts.
         <ul>
-          <li class="next">cardinality restrictions on properties</li>
-          <li class="next">inverse, symmetric, and transitive properties</li>
-          <li class="next">equality and disjointness</li>
-          <li class="next">…</li>
+          <li>cardinality restrictions on properties</li>
+          <li>inverse, symmetric, and transitive properties</li>
+          <li>equality and disjointness</li>
+          <li>…</li>
         </ul>
       </li>
-      <li class="next">
+      <li>
         OWL extends RDFS with advanced concepts.
         <ul>
           <li>RDFS and OWL are used side by side.</li>
@@ -999,7 +972,7 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
       for individuals, properties, and classes.
     </h2>
     <ul>
-      <li class="next">
+      <li>
         restrictions on individuals
         <ul class="inline">
           <li><code>owl:sameAs</code></li>
@@ -1007,7 +980,7 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
           <li>…</li>
         </ul>
       </li>
-      <li class="next">
+      <li>
         restrictions on properties
         <ul class="inline">
           <li><code>owl:ObjectProperty</code></li>
@@ -1016,7 +989,7 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
           <li>…</li>
         </ul>
       </li>
-      <li class="next">
+      <li>
         restrictions on classes
         <ul class="inline">
           <li><code>owl:intersectionOf</code></li>
@@ -1033,23 +1006,20 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
       a literal or a named node as object.
     </h2>
     <ul>
-      <li class="next">
+      <li>
         Properties taking only literal values as object<br>
         are instances of
         <a href="https://www.w3.org/TR/owl2-primer/#Entity_Declarations"><code>owl:DataTypeProperty</code></a>.
         <ul>
           <li><code>foaf:givenName a <strong>owl:DataTypeProperty</strong>.</code></li>
-          <li><code>foaf:givenName rdfs:range rdfs:Literal.</code></li>
         </ul>
       </li>
-      <li class="next">
+      <li>
         Properties taking only non-literal values as object<br>
         are instances of
         <a href="https://www.w3.org/TR/owl2-primer/#Entity_Declarations"><code>owl:ObjectProperty</code></a>.
         <ul>
           <li><code>foaf:knows a <strong>owl:ObjectProperty</strong>.</code></li>
-          <li><code>foaf:knows rdfs:range _:NonLiterals.</code></li>
-          <li><code>_:NonLiterals owl:complementOf rdfs:Literal.</code></li>
         </ul>
       </li>
     </ul>
@@ -1062,19 +1032,18 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
     </h2>
     <ul>
       <li>
-        One property is the <a href="https://www.w3.org/TR/owl2-primer/#Property_Characteristics"><code>owl:inverseOf</code></a> another<br>
-        if it asserts the same relation from object to subject.
+        A property is the <a href="https://www.w3.org/TR/owl2-primer/#Property_Characteristics"><code>owl:inverseOf</code></a> another<br>
+        if it asserts the same relation from <em>object</em> to <em>subject</em>.
         <ul>
-          <li class="next"><code>ex:TimBL <strong>foaf:made</strong> dbr:World_Wide_Web.</code></li>
-          <li class="next"><code>dbr:World_Wide_Web <strong>foaf:maker</strong> ex:TimBL.</code></li>
-          <li class="next"><code>foaf:made <strong>owl:inverseOf</strong> foaf:maker</code></li>
+          <li><code>ex:TimBL <strong>foaf:made</strong> dbr:World_Wide_Web.</code></li>
+          <li><code>dbr:World_Wide_Web <strong>foaf:maker</strong> ex:TimBL.</code></li>
+          <li><code>foaf:made <strong>owl:inverseOf</strong> foaf:maker</code></li>
         </ul>
       </li>
       <li class="next">
-        Ontologists typically pick <em>one</em> property direction.
+        Different ontologies choose different directions.
         <ul>
-          <li>Different ontologies might choose different directions.</li>
-          <li><code>owl:inverseOf</code> allows to connect such properties.</li>
+          <li><code>owl:inverseOf</code> allows connecting such properties.</li>
         </ul>
       </li>
     </ul>
@@ -1100,13 +1069,13 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
   <div class="tight quiz slide" id="functional-properties-effects">
     <h2>
       Functional properties have strong effects,<br>
-      so you have to understand them well.
+      so understand them well.
     </h2>
-    <p>What is the logical consequence of the following?</p>
-    <pre><code>ex:Julia ex:hasSpouse ex:Cathy.
+    <p>What happens when we put this into a reasoner?</p>
+    <pre class="next"><code>ex:Julia ex:hasSpouse ex:Cathy.
 ex:Julia ex:hasSpouse ex:John.
 ex:hasSpouse a owl:FunctionalProperty.</code></pre>
-    <p class="next">It might be counterintuitive, but the conclusion is:</p>
+    <p class="next">Perhaps counterintuitively, the conclusion is:</p>
     <pre class="next"><code>ex:Cathy owl:sameAs ex:John.</code></pre>
     <p class="next">To arrive at a contradiction, <a href="#individual-equality">explicitly define inequality</a>:</p>
     <pre class="next"><code>ex:Cathy owl:differentFrom ex:John.</code></pre>
@@ -1114,7 +1083,7 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
 
   <div class="slide" id="class-restrictions">
     <h2>
-      OWL allows to define classes<br>
+      OWL allows defining classes<br>
       based on (properties of) other classes.
     </h2>
     <ul>
@@ -1149,10 +1118,10 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
     <p>
       For example, the presence of
     </p>
-    <pre class="next"><code>&lt;#me&gt; ex:hasSpouse &lt;#SignificantOther&gt;.</code></pre>
-    <p>
-      together with the <a href="#class-restrictions">class restrictions we saw earlier</a><br>
-      ensures that the following triple <em>cannot</em> be true:
+    <pre><code>&lt;#me&gt; ex:hasSpouse &lt;#SignificantOther&gt;.</code></pre>
+    <p class="next">
+      together with the <a href="#class-restrictions">earlier class restrictions</a><br>
+      ensures the following triple <em>cannot</em> be true:
     </p>
     <pre class="next"><code>&lt;#me&gt; a ex:Single.</code></pre>
   </div>
@@ -1163,18 +1132,18 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
       others can/need to be extended.
     </h2>
     <ul>
-      <li class="next">
-        reasoner <em>with</em> built-in knowledge
+      <li>
+        reasoners <em>with</em> built-in knowledge
         <ul>
           <li>can tackle a problem without configuration</li>
           <li>can have internal optimizations for certain cases</li>
         </ul>
       </li>
-      <li class="next">
-        reasoner <em>without</em> built-in knowledge
+      <li>
+        reasoners <em>without</em> built-in knowledge
         <ul>
           <li>can be extended with new inference steps</li>
-          <li>can explain in-depth why a step was taken</li>
+          <li>can explain in-depth <em>why</em> a step was taken</li>
         </ul>
       </li>
     </ul>
@@ -1190,11 +1159,11 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
         N3 adds support for additional constructs.
         <dl>
           <dt>variables</dt>
-          <dd class="next"><code>?name</code></dd>
+          <dd><code>?name</code></dd>
           <dt>formulas</dt>
-          <dd class="next"><code>{ ?x a foaf:Person. }</code></dd>
+          <dd><code>{ ?x a foaf:Person. }</code></dd>
           <dt>implications</dt>
-          <dd class="next"><code>{ … } =&gt; { … }.</code></dd>
+          <dd><code>{ … } =&gt; { … }.</code></dd>
         </dl>
       </li>
       <li class="next">
@@ -1209,7 +1178,7 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
         Common <a href="#rdfs-vocabulary">RDFS</a> and <a href="#owl-concepts">OWL</a> concepts
         exist <a href="http://eulersharp.sourceforge.net/#theories">as N3 rules</a>.
         <ul>
-          <li>Read them when in doubt about RDFS or OWL concepts.</li>
+          <li>Read them when in doubt about RDFS or OWL.</li>
         </ul>
       </li>
     </ul>
