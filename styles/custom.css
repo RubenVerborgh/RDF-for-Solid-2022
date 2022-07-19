@@ -1,5 +1,6 @@
 .shower {
   --accent: #3a2d72;
+  --dimmed: #737373;
 }
 
 .shower .caption h1 {
@@ -7,14 +8,15 @@
 }
 
 .shower .title.slide h2 {
+  font-size: 2.75em;
+  margin-bottom: -0.15em;
   font-style: italic;
-  font-size: 3em;
-  margin-bottom: 0;
 }
 .shower .title.slide h3 {
-  font-size: 1.6em;
+  font-size: 1.5em;
   font-weight: normal;
-  line-height: 1.3;
+  line-height: 1.33;
+  color: var(--dimmed);
 }
 
 
@@ -76,4 +78,27 @@ del {
 iframe.query-client, iframe.website {
   width: 100%;
   height: 462px;
+}
+
+span.formula {
+  color: var(--accent);
+  margin: 0 .25em;
+}
+
+.slide.formula p:first-child {
+  font-size: 3em;
+  text-align: center;
+  margin: 2em 0 1.7em;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.text.slide {
+  text-align: right;
+}
+
+.text.slide h2 {
+  font-size: 2em;
+  margin: 3em 0 2em;
+  line-height: 1.3em;
 }
