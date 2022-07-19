@@ -92,6 +92,11 @@ iframe.image {
   font-style: italic;
 }
 
+.quiz.slide pre.big code {
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
 @keyframes slidein {
   from {
     left: 500px;
