@@ -1215,6 +1215,80 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
     </h2>
   </div>
 
+  <div class="slide" id="language-and-api">
+    <h2>
+      SPARQL closely resembles GraphQL:<br>
+      it is both a query language and an API.
+    </h2>
+    <figure class="cover width margin">
+      <img src="images/sparql-language-protocol.svg" alt="">
+    </figure>
+  </div>
+
+  <div class="slide" id="graphql-one-source">
+    <h2>
+      GraphQL queries only have meaning<br>
+      with respect to <em>one</em> source.
+    </h2>
+    <pre><code>
+
+
+# List 10 people and their names
+<span class="next">{
+  person(first:10) {
+    name
+  }
+}</span></code></pre>
+  </div>
+
+  <div class="slide" id="graphql-one-source-users">
+    <h2>
+      GraphQL queries only have meaning<br>
+      with respect to <em>one</em> source.
+    </h2>
+    <pre><code>
+
+
+# List 10 people and their names
+{
+  users(first:10) {
+    fullName
+  }
+}</code></pre>
+  </div>
+
+    <div class="slide" id="graphql-one-source-friends">
+    <h2>
+      GraphQL queries only have meaning<br>
+      with respect to <em>one</em> source.
+    </h2>
+    <pre><code>
+
+
+# List 10 people and their names
+{
+  friends(first:10) {
+    displayName
+  }
+}</code></pre>
+  </div>
+
+  <div class="slide" id="sparql-universal">
+    <h2>
+      SPARQL queries have universal meaning<br>
+      across <em>all</em> possible sources.
+    </h2>
+    <pre><code><span class="prefix">PREFIX dbo:  &lt;http://dbpedia.org/ontology/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+
+# List 10 people and their names
+SELECT * {
+  ?person a dbo:Person;
+          rdfs:label ?name.
+}
+LIMIT 10</code></pre>
+  </div>
+
   <div class="slide" id="sparql-language-protocol">
     <h2>
       <a href="https://www.w3.org/TR/sparql11-overview/">SPARQL Protocol And RDF Query Language</a>:
@@ -1240,6 +1314,22 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
         </ul>
       </li>
     </ul>
+  </div>
+
+  <div class="slide" id="client-side">
+    <h2>
+      We can separate language from API:<br>
+      this query runs partially <em>client-side</em>.
+    </h2>
+    <iframe class="query-client" src="query-client/#datasources=http%3A%2F%2Ffragments.dbpedia.org%2F2016-04%2Fen&query=SELECT%20*%20%7B%0A%20%20%3Fperson%20a%20dbo%3APerson%3B%0A%20%20%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname.%0A%7D%0ALIMIT%2010"></iframe>
+  </div>
+
+  <div class="slide" id="multiple-sources">
+    <h2>
+      The client-side engine especially shines<br>
+      when executing <em>cross-source</em> queries.
+    </h2>
+    <iframe class="query-client" src="query-client/#datasources=http%3A%2F%2Ffragments.dbpedia.org%2F2016-04%2Fen;http%3A%2F%2Fdata.linkeddatafragments.org%2Fviaf;http%3A%2F%2Fdata.linkeddatafragments.org%2Fharvard&query=SELECT%20%3Fperson%20%3Fname%20%3Fbook%20%3Ftitle%20%7B%0A%20%20%3Fperson%20dbo%3AbirthPlace%20%5B%20rdfs%3Alabel%20%22Ghent%22%40en%20%5D.%0A%20%20%3FviafID%20schema%3AsameAs%20%3Fperson%3B%0A%20%20%20%20%20%20%20%20%20%20schema%3Aname%20%3Fname.%0A%20%20%3Fbook%20dc%3Acontributor%20%5B%20foaf%3Aname%20%3Fname%20%5D%3B%0A%20%20%20%20%20%20%20%20dc%3Atitle%20%3Ftitle.%0A%7D"></iframe>
   </div>
 
   <div class="slide" id="sparql-select-example">
