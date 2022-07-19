@@ -1,5 +1,7 @@
 .shower {
   --accent: #3a2d72;
+  --lighter: #a296d5;
+  --highlight: #c45814;
   --dimmed: #737373;
 }
 
@@ -57,6 +59,47 @@ iframe.image {
 }
 .slide figure.cover.width.margin > :first-child {
   width: 88%
+}
+
+/* Quiz */
+.quiz.slide h2:before {
+  content: "Pop quiz!";
+  background: var(--lighter);
+  color: white;
+  opacity: .5;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  padding: 0 .5em .25em;
+  position: absolute;
+  transform: rotate(-35deg);
+  left: -60px;
+  top: 80px;
+  z-index: -100;
+  font-size: 100px;
+  line-height: 1;
+}
+
+.full .quiz.slide h2:before {
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+
+.quiz.slide h2:only-child {
+  font-size: 1.5em;
+  line-height: 1.3;
+  margin-top: 5em;
+  font-style: italic;
+}
+
+@keyframes slidein {
+  from {
+    left: 500px;
+    top: 500px;
+    opacity: 1;
+    transform: rotate(185deg);
+    background: var(--highlight);
+  }
 }
 
 
