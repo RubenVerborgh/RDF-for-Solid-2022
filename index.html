@@ -665,6 +665,32 @@ dbr:Tim_Berners-Lee schema:givenName "Tim";
     </ul>
   </div>
 
+  <div class="slide" id="semantic-web-reasoning">
+    <h2>
+      Semantic Web reasoning is an agent’s<br>
+      ability to verify and discover facts.
+    </h2>
+    <ul>
+      <li class="next">
+        Linked Data provides a body of knowledge.
+        <ul>
+          <li>data triples</li>
+          <li>ontologies</li>
+        </ul>
+      </li>
+      <li class="next">
+        Query engines let clients select specific facts.
+      </li>
+      <li class="next">
+        Reasoning allows clients to combine knowledge<br>
+        from different sources and draw conclusions.
+        <ul>
+          <li>Clients <em>infer</em> facts based on other facts.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
   <div class="slide" id="rdfs-vocabulary">
     <h2>
       <a href="https://www.w3.org/TR/rdf-schema/">RDF Schema</a> is an RDF vocabulary<br>
@@ -858,6 +884,31 @@ rdfs:domain <strong>rdfs:subPropertyOf</strong> rdfs:seeAlso.
 </code></pre>
   </div>
 
+  <div class="tight slide" id="rdfs-reasoners">
+    <h2>
+      <a href="https://www.w3.org/2001/sw/wiki/Category%3ARDFS_Reasoner">RDFS reasoners</a>
+      can make entailments<br>
+      based on the <a href="#rdfs-vocabulary">RDFS</a> semantics.
+    </h2>
+    <ul>
+      <li>
+        Load the data <em>together</em> with its vocabularies.
+        <ul>
+          <li>RDFS reasoning is built-in, but not your vocabulary.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      For example, the presence of
+    </p>
+    <pre class="next"><code>&lt;#Tim&gt; foaf:knows &lt;#Wendy&gt;.
+foaf:knows rdfs:domain foaf:Person.</code></pre>
+    <p>
+      will result in an extra triple
+    </p>
+    <pre class="next"><code>&lt;#Tim&gt; a foaf:Person.</code></pre>
+  </div>
+
   <div class="slide" id="rdfs-understanding">
     <h2>
       Knowledge of RDFS will help you<br>
@@ -1040,6 +1091,113 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
         owl:maxCardinality 0
     ])
 ].</code></pre>
+  </div>
+
+  <div class="tight slide" id="owl-reasoners">
+    <h2>
+      <a href="https://www.w3.org/2001/sw/wiki/Category%3AOWL_Reasoner">OWL reasoners</a>
+      can make entailments<br>
+      based on the <a href="#owl-concepts">OWL</a> semantics.
+    </h2>
+    <ul>
+      <li>
+        Load the data <em>together</em> with its vocabularies.
+        <ul>
+          <li>OWL reasoning is built-in, but not your vocabulary.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      For example, the presence of
+    </p>
+    <pre class="next"><code>&lt;#me&gt; ex:hasSpouse &lt;#SignificantOther&gt;.</code></pre>
+    <p>
+      together with the <a href="#class-restrictions">class restrictions we saw earlier</a><br>
+      ensures that the following triple <em>cannot</em> be true:
+    </p>
+    <pre class="next"><code>&lt;#me&gt; a ex:Single.</code></pre>
+  </div>
+
+  <div class="slide" id="built-in-knowledge">
+    <h2>
+      Some reasoners are tailored to a task,<br>
+      others can/need to be extended.
+    </h2>
+    <ul>
+      <li class="next">
+        reasoner <em>with</em> built-in knowledge
+        <ul>
+          <li>can tackle a problem without configuration</li>
+          <li>can have internal optimizations for certain cases</li>
+        </ul>
+      </li>
+      <li class="next">
+        reasoner <em>without</em> built-in knowledge
+        <ul>
+          <li>can be extended with new inference steps</li>
+          <li>can explain in-depth why a step was taken</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="notation3">
+    <h2>
+      <a href="https://www.w3.org/TeamSubmission/n3/">Notation3 (N3)</a> is a rule-based language<br>
+      defined as a superset of Turtle.
+    </h2>
+    <ul>
+      <li>
+        N3 adds support for additional constructs.
+        <dl>
+          <dt>variables</dt>
+          <dd class="next"><code>?name</code></dd>
+          <dt>formulas</dt>
+          <dd class="next"><code>{ ?x a foaf:Person. }</code></dd>
+          <dt>implications</dt>
+          <dd class="next"><code>{ … } =&gt; { … }.</code></dd>
+        </dl>
+      </li>
+      <li class="next">
+        Several N3 reasoners exist.
+        <ul class="inline">
+          <li><a href="https://www.w3.org/2000/10/swap/doc/cwm.html">cwm</a></li>
+          <li><a href="http://eulersharp.sourceforge.net/">EYE</a></li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li class="next">
+        Common <a href="#rdfs-vocabulary">RDFS</a> and <a href="#owl-concepts">OWL</a> concepts
+        exist <a href="http://eulersharp.sourceforge.net/#theories">as N3 rules</a>.
+        <ul>
+          <li>Read them when in doubt about RDFS or OWL concepts.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="tim-knows-wendy-rule">
+    <h2>
+      We can define rules<br>
+      for very specific situations.
+    </h2>
+    <iframe class="query-client" src="eye-client/#data=tim.n3&amp;data=tim-knows-wendy-rule.n3&amp;query=query.n3"></iframe>
+  </div>
+
+  <div class="slide" id="knows-rule">
+    <h2>
+      Defining rules at a higher level<br>
+      increases their reusability.
+    </h2>
+    <iframe class="query-client" src="eye-client/#data=tim.n3&amp;data=knows-rule.n3&amp;query=query.n3"></iframe>
+  </div>
+
+  <div class="slide" id="knows-ontology">
+    <h2>
+      Defining rules at the ontological level<br>
+      makes a vocabulary declarative.
+    </h2>
+    <iframe class="query-client" src="eye-client/#data=tim.n3&amp;data=knows.n3&amp;data=symmetric-property.n3&amp;query=query.n3"></iframe>
   </div>
 
   <div class="toc slide" id="toc-querying">

@@ -1,0 +1,49 @@
+@font-face{font-family:'Open Sans';src:local("Open Sans"),local("OpenSans"),url(../../_shared/fonts/OpenSans.woff2) format("woff2"),url(../../_shared/fonts/OpenSans.woff) format("woff")}@font-face{font-weight:700;font-family:'Open Sans';src:local("Open Sans Bold"),local("OpenSans-Bold"),url(../../_shared/fonts/OpenSans.Bold.woff2) format("woff2"),url(../../_shared/fonts/OpenSans.Bold.woff) format("woff")}@font-face{font-style:italic;font-family:'Open Sans';src:local("Open Sans Italic"),local("OpenSans-Italic"),url(../../_shared/fonts/OpenSans.Italic.woff2) format("woff2"),url(../../_shared/fonts/OpenSans.Italic.woff) format("woff")}@font-face{font-style:italic;font-weight:700;font-family:'Open Sans';src:local("Open Sans Bold Italic"),local("OpenSans-BoldItalic"),url(../../_shared/fonts/OpenSans.Bold.Italic.woff2) format("woff2"),url(../../_shared/fonts/OpenSans.Bold.Italic.woff) format("woff")}@font-face{font-weight:300;font-family:'Open Sans';src:local("Open Sans Light"),local("OpenSans-Light"),url(../../_shared/fonts/OpenSans.Light.woff2) format("woff2"),url(../../_shared/fonts/OpenSans.Light.woff) format("woff")}@font-face{font-family:'Source Code Pro';src:local("Source Code Pro"),local("SourceCodePro-Regular"),url(../../_shared/fonts/SourceCodePro.woff2) format("woff2"),url(../../_shared/fonts/SourceCodePro.woff) format("woff")}@font-face{font-weight:700;font-family:'Source Code Pro';src:local("Source Code Pro Bold"),local("SourceCodePro-Bold"),url(../../_shared/fonts/SourceCodePro.Bold.woff2) format("woff2"),url(../../_shared/fonts/SourceCodePro.Bold.woff) format("woff")}
+
+html, body {
+  margin: 0;
+  padding: 0 0 1em 0;
+}
+html, input, textarea, button {
+  font: 20pt/1.4 'Open Sans', Verdana, Arial, sans-serif;
+  -webkit-text-size-adjust: none;
+}
+* {
+  outline: none !important;
+}
+
+.eye .old {
+  display: none;
+}
+
+.eye textarea {
+  width: 100%;
+  height: 200px;
+  font-family: 'Source Code Pro', monospace !important;
+}
+
+.eye .ui-tabs-nav li.query {
+  float: right;
+  display: none;
+}
+.eye .ui-tabs-nav li.query:not(.ui-state-active) a {
+  color: #453688;
+}
+
+.eye .error, .eye .error * {
+  color: #D76016 !important;
+}
+
+.eye .ui-button {
+  margin: 1em;
+  padding: .5em 1em;
+}
+
+.eye .ui-tabs-nav .label {
+  margin: .3em 1.5em 0 .6em;
+  min-width: 5em;
+}
+
+.eye .ui-tabs .ui-tabs-nav li a {
+  padding: .3em 1em;
+}
