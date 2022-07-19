@@ -1022,6 +1022,26 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
     <pre class="next"><code>ex:Cathy owl:differentFrom ex:John.</code></pre>
   </div>
 
+  <div class="slide" id="class-restrictions">
+    <h2>
+      OWL allows to define classes<br>
+      based on (properties of) other classes.
+    </h2>
+    <ul>
+      <li>
+        Make intersections and complements of classes<br>
+        combined with restrictions on property value.
+      </li>
+    </ul>
+    <pre><code>ex:Single owl:equivalentClass [ a owl:Class;
+    owl:intersectionOf (foaf:Person, [
+        a owl:Class, owl:Restriction;
+        owl:onProperty ex:hasPartner;
+        owl:maxCardinality 0
+    ])
+].</code></pre>
+  </div>
+
   <div class="toc slide" id="toc-querying">
     <ul>
       <li><a href="#toc-rdf">RDF &amp; Solid</a></li>
