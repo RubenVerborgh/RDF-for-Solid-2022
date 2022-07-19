@@ -92,6 +92,11 @@ iframe.image {
   font-style: italic;
 }
 
+.quiz.slide :not(pre) > code {
+  font-style: normal;
+  padding: 0 .1em;
+}
+
 .quiz.slide pre.big code {
   font-size: 1.5em;
   line-height: 1.5;
