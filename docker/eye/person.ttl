@@ -1,0 +1,22 @@
+PREFIX schema: <https://schema.org/>
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX ex: <https://example.org/tmp#>
+
+ex:Janet a schema:Person;
+         schema:name "Janet"@en;
+         ex:hasRoom ex:Stable406.
+
+ex:Inrupt a schema:Corporation;
+          schema:employee ex:John, ex:Tim, ex:Janet.
+
+ex:Stable406 a schema:HotelRoom;
+             schema:numberOfBedrooms 1;
+             schema:numberOfBathroomsTotal 1;
+             schema:containedInPlace ex:Stirrups.
+
+ex:Stirrups a schema:Hotel;
+            schema:name "Stirrups Hotel Bracknell"@en;
+            schema:address [
+              schema:postalCode "RG42 6LD";
+              schema:addressCountry dbpedia:United_Kingdom;
+            ].

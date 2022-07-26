@@ -1,0 +1,9 @@
+PREFIX schema: <https://schema.org/>
+
+# Find organizations
+{
+  ?person a schema:Organization.
+}
+=> {
+  ?person a schema:Organization.
+}.

@@ -1,4 +1,4 @@
-# This document is a query that instructs the EYE reasoner
+# This document contains a query that instructs the EYE reasoner
 # what triples it should try to derive,
 # and what triples it should output.
 

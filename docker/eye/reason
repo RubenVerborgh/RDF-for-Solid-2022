@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
 LOG=/tmp/eye.log
-FLAGS="--quiet --nope --query query.n3 $@"
-docker run --rm -v "$PWD:/eye" eye/eye -- $FLAGS 2>$LOG || cat $LOG >&2 && exit 1
+
+# Suppress reasoner info and don't show proofs
+FLAGS="--quiet --nope"
+
+# Add default query if no query was passed
+if [[ ! "$*" =~ "--query" ]]; then
+  FLAGS="$FLAGS --query find-all.n3"
+fi
+
+# Add remaining arguments
+FLAGS="$FLAGS $@"
+
+# Start the EYE reasoner and only show the log in case of errors
+docker run --rm -v "$PWD:/eye" eye/eye -- $FLAGS 2>$LOG \
+  || cat $LOG >&2 && exit 1

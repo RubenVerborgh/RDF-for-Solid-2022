@@ -1,0 +1,11 @@
+PREFIX schema: <https://schema.org/>
+
+# Find places and their properties
+{
+  ?person a schema:Place.
+  ?person ?property ?value.
+}
+=> {
+  ?person a schema:Place.
+  ?person ?property ?value.
+}.

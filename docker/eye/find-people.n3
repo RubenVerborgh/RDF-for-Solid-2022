@@ -1,0 +1,11 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+# Find FOAF people and their properties
+{
+  ?person a foaf:Person.
+  ?person ?property ?value.
+}
+=> {
+  ?person a foaf:Person.
+  ?person ?property ?value.
+}.
