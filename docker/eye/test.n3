@@ -1,1 +1,13 @@
-<urn:eye:hello> <urn:eye:world> "!".
+PREFIX ex: <https://example.org/tmp#>
+
+# A mountain climber says hello
+ex:MountainClimber ex:shouts "Hello World!"@en.
+
+# The mountain echoes everything
+{
+  ?someone ex:shouts ?something.
+}
+=>
+{
+  ex:Mountain ex:echoes ?something.
+}.

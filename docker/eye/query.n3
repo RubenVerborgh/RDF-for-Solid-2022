@@ -1,0 +1,16 @@
+# This document is a query that instructs the EYE reasoner
+# what triples it should try to derive,
+# and what triples it should output.
+
+# The query below instructs the reasoner to derive all triples,
+# and to return all of them unchanged.
+# While this is an easy query to start with,
+# its output can be overwhelming
+# and sometimes infinite (because reasoning is recursive).
+{
+  ?subject ?predicate ?object.
+}
+=>
+{
+  ?subject ?predicate ?object.
+}.
