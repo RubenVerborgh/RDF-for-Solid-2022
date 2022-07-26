@@ -61,8 +61,28 @@ iframe.image {
   width: 88%
 }
 
-/* Quiz */
 
+/* Tasks */
+
+.task.slide h2:before {
+  counter-increment: task;
+  background: var(--accent);
+  color: white;
+  content: "Task " counter(task);
+  padding: 0 .25em;
+}
+
+.task.slide code {
+  color: var(--accent);
+  font-weight: normal;
+}
+
+.task.slide ol li ul {
+  margin: 0;
+}
+
+
+/* Quizzes */
 
 .quiz.slide h2:before {
   background: var(--lighter);

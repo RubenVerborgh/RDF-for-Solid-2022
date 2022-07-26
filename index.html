@@ -600,12 +600,6 @@ console.log(contacts.knows[0].givenName);</code></pre>
       <li>
         Many pages mark up their data<br>
         to improve indexing of their content.
-        <ul>
-          <li>
-            The Internet Movie Database marks up movies<br>
-            with <a href="#rdfa">RDFa</a> and <a href="#schema-org">Microdata</a> <em>(<a href="https://www.imdb.com/title/tt0071562/">example</a>)</em>.
-          </li>
-        </ul>
       </li>
       <li>
         <a href="../linked-data-publishing/#linked-data-documents">Linked Data documents</a>
@@ -1170,13 +1164,13 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
         Several N3 reasoners exist.
         <ul class="inline">
           <li><a href="https://www.w3.org/2000/10/swap/doc/cwm.html">cwm</a></li>
-          <li><a href="http://eulersharp.sourceforge.net/">EYE</a></li>
+          <li><a href="https://josd.github.io/eye/">EYE</a></li>
           <li>…</li>
         </ul>
       </li>
       <li class="next">
         Common <a href="#rdfs-vocabulary">RDFS</a> and <a href="#owl-concepts">OWL</a> concepts
-        exist <a href="http://eulersharp.sourceforge.net/#theories">as N3 rules</a>.
+        exist <a href="https://josd.github.io/eye/reasoning/rpo/">as N3 rules</a>.
         <ul>
           <li>Read them when in doubt about RDFS or OWL.</li>
         </ul>
@@ -1219,6 +1213,34 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
         <p><a href="https://go.verborgh.org/rdf-solid-2022">go.verborgh.org/rdf-solid-2022</a></p>
       </figcaption>
     </figure>
+  </div>
+
+  <div class="task slide" id="task-reasoning">
+    <h2>
+      Use a reasoner to uncover<br>
+      hidden knowledge in existing data.<br>
+    </h2>
+    <ol>
+      <li class="next">
+        Open a shell on the
+        <code><a href="https://github.com/RubenVerborgh/RDF-for-Solid-2022/tree/main/docker/eye">docker/eye/</a></code> folder<br>
+        and initialize the reasoner with
+        <code>./build</code>
+      </li>
+      <li class="next">
+        Try out the example
+        <code>./reason test.n3</code>
+      </li>
+      <li class="next">
+        Derive new triples
+        for <a href="https://github.com/RubenVerborgh/RDF-for-Solid-2022/blob/main/docker/eye/person.ttl">Janet</a>:
+        <ul>
+          <li><code>./reason *.n3 *.ttl --query find-people.n3</code></li>
+          <li><code>./reason *.n3 *.ttl --query find-places.n3</code></li>
+          <li><code>./reason *.n3 *.ttl --query find-organizations.n3</code></li>
+        </ul>
+      </li>
+    </ol>
   </div>
 
   <div class="toc slide" id="toc-querying">
