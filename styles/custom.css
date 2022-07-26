@@ -177,3 +177,15 @@ span.formula {
   margin: 3em 0 2em;
   line-height: 1.3em;
 }
+
+#qr figure {
+  text-align: center;
+}
+#qr img {
+  height: 320px;
+}
+#qr p {
+  margin: .66em 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}
