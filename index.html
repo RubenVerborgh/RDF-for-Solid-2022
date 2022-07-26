@@ -1356,12 +1356,12 @@ SELECT ?name ?person WHERE {
 
   <div class="slide" id="sparql-select-evaluation">
     <h2>
-      A query engine will try to find mappings<br>
-      such that the entire BGP is satisfied.
+      A query engine tries to find <em>mappings</em><br>
+      that satisfy the full basic graph pattern.
     </h2>
     <p>
-      When the mappings are substituted in the BGP,<br>
-      the dataset should contain triples as follows:
+      The dataset must contain these triples<br>
+      after substituting the variables:
     </p>
     <ul>
       <li><code>?person a dbo:Artist.</code></li>
@@ -1404,7 +1404,7 @@ SELECT ?name ?person WHERE {
 
   <div class="slide" id="sparql-modifiers-example">
     <h2>
-      In addition to only BGPs,<br>
+      In addition to only basic graph patterns,<br>
       SPARQL queries can contain <em>modifiers</em>.
     </h2>
     <iframe class="query-client" src="query-client/#datasources=https%3A%2F%2Ffragments.dbpedia.org%2F2016-04%2Fen&query=SELECT%20%3Fname%20%3Fperson%20%3Fspouse%20WHERE%20%7B%0A%20%20%3Fperson%20rdfs%3Alabel%20%3Fname.%0A%20%20%3Fperson%20dbo%3AinfluencedBy%20dbp%3APablo_Picasso.%0A%20%20OPTIONAL%20%7B%20%3Fperson%20dbo%3Aspouse%20%3Fspouse.%20%7D%0A%20%20FILTER%20LANGMATCHES(LANG(%3Fname)%2C%20%22EN%22)%0A%7D%0ALIMIT%2010"></iframe>
