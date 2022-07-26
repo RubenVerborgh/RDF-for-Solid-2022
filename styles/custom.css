@@ -65,10 +65,9 @@ iframe.image {
 /* Tasks */
 
 .task.slide h2:before {
-  counter-increment: task;
   background: var(--accent);
   color: white;
-  content: "Task " counter(task);
+  content: "Task";
   padding: 0 .25em;
 }
 

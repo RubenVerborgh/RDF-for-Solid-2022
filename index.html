@@ -929,7 +929,7 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
       <li>
         <a href="http://xmlns.com/foaf/spec/index.rdf">the FOAF vocabulary</a>
         <ul>
-          <li><a href="assets/foaf.ttl">Turtle version</a></li>
+          <li><a href="docker/sparql/foaf.ttl">Turtle version</a></li>
         </ul>
       </li>
     </ul>
@@ -1450,6 +1450,41 @@ SELECT ?name ?person WHERE {
       Does the <code>null</code> for <code>?spouse</code> mean<br>
       that Charles Sheeler is a <code>ex:Single</code>?
     </h2>
+  </div>
+
+  <div class="task slide" id="task-query">
+    <h2>
+      Describe photos in your ontology,<br>
+      then query them using FOAF.<br>
+    </h2>
+    <ol>
+      <li class="next">
+        Shell into <code><a href="https://github.com/RubenVerborgh/RDF-for-Solid-2022/tree/main/docker/sparql">docker/sparql/</a></code>,
+        then build (<code>./build</code>)<br>
+        and start (<code>./start *.ttl</code>)
+        your SPARQL endpoint
+      </li>
+      <li class="next">
+        Write your own ontology for photos,
+        including:
+        <ul class="inline">
+          <li><em>photo</em></li>
+          <li><em>title</em></li>
+          <li><em>depicted person</em></li>
+          <li><em>name</em></li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li class="next">
+        Connect your ontology to FOAF
+      </li>
+      <li class="next">
+        Write a FOAF query to access your data
+        <ul class="next">
+          <li>…and <a href="http://query.linkeddatafragments.org/#datasources=http%3A%2F%2Flocalhost%3A3000%2Fdataset%2Fsparql;https%3A%2F%2Fdata.verborgh.org%2Fruben&query=PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0A%0ASELECT%20%3Fname%20WHERE%20%7B%0A%20%20%3Fperson%20a%20foaf%3APerson%3B%0A%20%20%20%20%20%20%20%20%20%20foaf%3Aname%20%3Fname.%0A%7D">data created by others</a>!</li>
+        </ul>
+      </li>
+    </ol>
   </div>
 
   <div class="toc slide" id="recap">

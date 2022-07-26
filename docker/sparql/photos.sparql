@@ -1,0 +1,8 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?photo ?name WHERE {
+  ?photo a foaf:Image;
+         foaf:depicts ?person.
+  ?person a foaf:Person;
+          foaf:name ?name.
+}
