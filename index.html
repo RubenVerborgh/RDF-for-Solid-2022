@@ -302,11 +302,6 @@
       </li>
       <li class="next">
         RDF has different concrete syntaxes.
-        <ul class="inline">
-          <li>triple-based</li>
-          <li>JSON-based</li>
-          <li>XML-based</li>
-        </ul>
       </li>
     </ul>
   </div>
@@ -373,31 +368,6 @@ dbr:Tim_Berners-Lee foaf:knows dbr:Ted_Nelson.
 </code></pre>
   </div>
 
-  <div class="slide" id="jsonld">
-    <h2>
-      <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a> is a <a href="../architecture/#json">JSON</a> syntax to represent<br>
-       an RDF dataset, supporting named graphs.
-    </h2>
-    <ul>
-      <li>
-        Each document points to a JSON-LD <a href="https://www.w3.org/TR/json-ld/#the-context">context</a>,<br>
-        creating meaning by mapping <a href="https://www.w3.org/TR/json-ld/#dfn-term">JSON terms</a> to <a href="https://www.w3.org/TR/json-ld/#dfn-iri">IRIs</a>.
-        <ul>
-          <li>
-            It is linked either from the JSON document with <code><a href="https://www.w3.org/TR/json-ld/#the-context">@context</a></code>
-          </li>
-          <li>
-            or outside of the document through an <a href="https://www.w3.org/TR/json-ld/#interpreting-json-as-json-ld">HTTP <code>Link</code> header</a>.
-          </li>
-        </ul>
-      </li>
-      <li class="next">
-        The <code><a href="https://www.w3.org/TR/json-ld/#iris">@id</a></code> keyword
-        points to a resource identifier
-      </li>
-    </ul>
-  </div>
-
   <div class="slide" id="rdfxml">
     <h2>
       The <a href="https://www.w3.org/TR/rdf-syntax-grammar/">XML-based syntax for RDF</a><br>
@@ -413,6 +383,29 @@ dbr:Tim_Berners-Lee foaf:knows dbr:Ted_Nelson.
     &lt;schema:knows rdf:resource="http://dbpedia.org/resource/Ted_Nelson"/&gt;
   &lt;/rdf:Description&gt;
 &lt;/rdf:RDF&gt;</code></pre>
+  </div>
+
+  <div class="slide" id="jsonld">
+    <h2>
+      <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a> is a <a href="../architecture/#json">JSON</a> syntax to represent<br>
+       an RDF dataset, supporting named graphs.
+    </h2>
+    <ul>
+      <li>
+        Each document points to a JSON-LD <a href="https://www.w3.org/TR/json-ld/#the-context">context</a>,<br>
+        creating meaning by mapping <a href="https://www.w3.org/TR/json-ld/#dfn-term">JSON terms</a> to <a href="https://www.w3.org/TR/json-ld/#dfn-iri">IRIs</a>.
+        <ul>
+          <li>
+            via <code><a href="https://www.w3.org/TR/json-ld/#the-context">@context</a></code>
+            or through an <a href="https://www.w3.org/TR/json-ld/#interpreting-json-as-json-ld">HTTP <code>Link</code> header</a>.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        The <code><a href="https://www.w3.org/TR/json-ld/#iris">@id</a></code> keyword
+        enables making subjects explicit.
+      </li>
+    </ul>
   </div>
 
   <div class="quiz slide" id="quiz-jsonld-no-context">
