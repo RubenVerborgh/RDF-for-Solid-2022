@@ -5,6 +5,8 @@
   --dimmed: #737373;
 }
 
+/* Header */
+
 .shower .caption h1 {
   line-height: 1.2;
 }
@@ -20,7 +22,10 @@
   line-height: 1.33;
   color: var(--dimmed);
 }
-
+.shower .caption p + p {
+  margin-top: 1em;
+  font-style: italic;
+}
 
 /* Quotes */
 
