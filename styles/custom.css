@@ -109,11 +109,16 @@ iframe.image {
   transform: rotate(-35deg);
 }
 
+.quiz.slide h2 {
+  font-style: italic;
+}
 .quiz.slide h2:only-child {
   font-size: 1.5em;
   line-height: 1.3;
   margin-top: 5em;
-  font-style: italic;
+}
+.quiz.slide h2 em {
+  font-style: normal;
 }
 
 .quiz.slide :not(pre) > code {

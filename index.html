@@ -109,9 +109,9 @@
       <li class="next">
         However,
         <span class="formula">f(<var>x</var>) = <var>a</var> <var>x</var> + <var>b</var></span>
-        actually<br> covers a much larger problem space.
+        actually<br> tackles a much larger set of problems.
         <ul>
-          <li>
+          <li class="next">
             So the difficulty is <strong>not</strong> the letters,<br>
             but the <em>increased problem space</em>.
           </li>
@@ -126,7 +126,7 @@
 
   <div class="slide" id="simplify-complexify">
     <blockquote class="large">
-      <p>
+      <p class="next">
         In order to simplify,<br>
         one must complexify<span class="next">,<br>
         <i>i.e.</i>, see simple things<br>
@@ -139,9 +139,9 @@
   <div class="slide" id="complexities">
     <h2>
       A well-designed complexity<br>
-      brings additional simplicity.
+      must deliver simplicity.
     </h2>
-    <p>What happened to good old natural numbers?</p>
+    <p class="next">What happened to good old natural numbers?</p>
     <ul class="next">
       <li>
         Fractions are absurd—I only have whole apples!
@@ -186,8 +186,9 @@
       </p>
       <p class="next">
         RDF is painfully simplistic,<br>
-        <span class="next">but it allows you to work with real-world data<br>
-        and problems that are horribly complicated.</span>
+        <span class="next">but it allows you to work with
+          real-world data<br> and problems</span>
+        <span class="next">that are horribly complicated.</span>
       </p>
       <cite><a href="https://book.validatingrdf.com/bookHtml005.html">Dan Brickley &amp; Libby Miller</a></cite>
     </blockquote>
@@ -256,13 +257,12 @@
       We make the <em>open-world</em> assumption.
     </h2>
     <ul>
-      <li class="next">
-        Relational databases use highly rigid structures.<br>
-        They strive for complete data.
+      <li>
+        Relational databases use rigid structures<br>
+        and strive for complete data.
         <ul>
           <li>
-            A <code>NULL</code> value can signal missing data,<br>
-            but this is typically an undesired situation.
+            <code>NULL</code> values are typically undesired.
           </li>
         </ul>
       </li>
@@ -270,8 +270,7 @@
         With Linked Data, no source has all of the truth.<br>
         Other sources <em>might</em> have more data on a subject.
         <ul>
-          <li class="next">The absence of a fact does <em>not</em> imply its falsehood.</li>
-          <li class="next">A fact has 2 possible states: <em>true</em> and <em>unknown</em>.</li>
+          <li>It’s a <em>feature</em> ✨, not a bug 🪲.</li>
         </ul>
       </li>
     </ul>
@@ -334,6 +333,7 @@
     </h2>
     <pre><code>PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
 PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+
 dbr:Tim_Berners-Lee a foaf:Person;
                     foaf:knows dbr:Ted_Nelson,
                                dbr:Wendy_Hall.</code></pre>
@@ -344,11 +344,11 @@ dbr:Tim_Berners-Lee a foaf:Person;
       <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> is a superset of <a href="#ntriples">N-Triples</a><br>
       with support for named graphs.
     </h2>
-    <pre><code><span class="comment"># Triples in the default graph look like N-Triples.</span>
+    <pre><code><span class="comment"># Triples in the default graph look like N-Triples</span>
 &lt;urn:ex:s1&gt; &lt;urn:ex:p1&gt; &lt;urn:ex:o1&gt;.
 &lt;urn:ex:s1&gt; &lt;urn:ex:p2&gt; "abc".
 
-<span class="comment"># Triples in named graphs have a fourth element.</span>
+<span class="comment"># Triples in named graphs have a fourth element</span>
 &lt;urn:ex:s2&gt; &lt;urn:ex:p1&gt; &lt;urn:ex:o2&gt; <strong>&lt;urn:ex:GraphA&gt;</strong>.
 &lt;urn:ex:s2&gt; &lt;urn:ex:p2&gt; "xyz" <strong>&lt;urn:ex:GraphB&gt;</strong>.
 </code></pre>
@@ -360,11 +360,10 @@ dbr:Tim_Berners-Lee a foaf:Person;
       (<em>not</em> <a href="#nquads">N-Quads</a>)<br>
       with support for named graphs.
     </h2>
-    <pre><code>PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
-PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
-<span class="comment"># Triples in the default graph look like Turtle.</span>
+    <pre><code><span class="comment"># Triples in the default graph look like Turtle</span>
 dbr:Tim_Berners-Lee foaf:knows dbr:Ted_Nelson.
-<span class="comment"># Named graphs are indicated by a <a href="https://www.w3.org/TR/trig/#sec-graph-statements">graph statement</a>.</span>
+
+<span class="comment"># Named graphs are indicated by a graph statement</span>
 <strong>&lt;http://example.org/graphs/Fiction&gt; {</strong>
     dbr:Clark_Kent a foaf:Person;
                      foaf:nick "Superman"@en.
@@ -400,8 +399,8 @@ dbr:Tim_Berners-Lee foaf:knows dbr:Ted_Nelson.
         creating meaning by mapping <a href="https://www.w3.org/TR/json-ld/#dfn-term">JSON terms</a> to <a href="https://www.w3.org/TR/json-ld/#dfn-iri">IRIs</a>.
         <ul>
           <li>
-            via <code><a href="https://www.w3.org/TR/json-ld/#the-context">@context</a></code>
-            or through an <a href="https://www.w3.org/TR/json-ld/#interpreting-json-as-json-ld">HTTP <code>Link</code> header</a>.
+            Use <code><a href="https://www.w3.org/TR/json-ld/#the-context">@context</a></code>
+            or an <a href="https://www.w3.org/TR/json-ld/#interpreting-json-as-json-ld">HTTP <code>Link</code> header</a>.
           </li>
         </ul>
       </li>
@@ -466,7 +465,7 @@ dbr:Tim_Berners-Lee foaf:knows dbr:Ted_Nelson.
 
   <div class="slide" id="jsonld-flattened">
     <h2>
-      The <em>same</em> RDF can be represented as<br>
+      The <em>same</em> RDF can be represented in<br>
       infinitely many <em>different</em> ways as JSON-LD.
     </h2>
     <pre class="scroll"><code>{
@@ -484,8 +483,8 @@ dbr:Tim_Berners-Lee foaf:knows dbr:Ted_Nelson.
 
   <div class="slide" id="jsonld-framed">
     <h2>
-      Some JSON-LD documents look almost<br>
-      like regular JSON documents.
+      Some of those representations<br>
+      look like regular JSON documents.
     </h2>
     <pre class="scroll"><code>{
   "@context": "http://schema.org/",
@@ -519,8 +518,7 @@ dbr:Tim_Berners-Lee foaf:knows dbr:Ted_Nelson.
       JSON-LD documents can be approached<br>
       as RDF triples (or quads).
     </h2>
-    <pre class="scroll"><code><span class="comment"># These triples are equivalent to the <a href="#jsonld-example">JSON-LD example</a>.</span>
-PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
+    <pre class="scroll"><code>PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
 PREFIX schema: &lt;http://schema.org&gt;
 
 dbr:Ted_Nelson schema:givenName "Ted".
@@ -530,7 +528,7 @@ dbr:Tim_Berners-Lee schema:givenName "Tim";
 
   <div class="quiz slide" id="quiz-jsonld-structure">
     <h2>
-      Do we like the code below?<br>
+      Should apps use this code?<br>
       Why (not)?
     </h2>
     <pre><code><span class="comment">// Retrieve a JSON-LD document</span>
@@ -545,7 +543,7 @@ console.log(contacts.knows[0].givenName);</code></pre>
   <div class="slide" id="rdf-syntaxes-schema">
     <h2>
       The appropriate RDF syntax depends on<br>
-      RDF 1.1 support and client technology.
+      graph support and client technology.
     </h2>
     <iframe class="image" src="images/rdf-syntaxes.svg"></iframe>
   </div>
@@ -1059,11 +1057,10 @@ foaf:knows rdfs:domain foaf:Person.</code></pre>
 
   <div class="tight quiz slide" id="functional-properties-effects">
     <h2>
-      Functional properties have strong effects,<br>
-      so understand them well.
+      What happens when<br>
+      we put this into a reasoner?
     </h2>
-    <p>What happens when we put this into a reasoner?</p>
-    <pre class="next"><code>ex:Julia ex:hasSpouse ex:Cathy.
+    <pre><code>ex:Julia ex:hasSpouse ex:Cathy.
 ex:Julia ex:hasSpouse ex:John.
 ex:hasSpouse a owl:FunctionalProperty.</code></pre>
     <p class="next">Perhaps counterintuitively, the conclusion is:</p>
@@ -1124,14 +1121,14 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
     </h2>
     <ul>
       <li>
-        reasoners <em>with</em> built-in knowledge
+        Reasoners <em>with</em> built-in knowledge
         <ul>
           <li>can tackle a problem without configuration</li>
           <li>can have internal optimizations for certain cases</li>
         </ul>
       </li>
       <li>
-        reasoners <em>without</em> built-in knowledge
+        Reasoners <em>without</em> built-in knowledge
         <ul>
           <li>can be extended with new inference steps</li>
           <li>can explain in-depth <em>why</em> a step was taken</li>
@@ -1202,7 +1199,7 @@ ex:hasSpouse a owl:FunctionalProperty.</code></pre>
   <div class="slide" id="qr">
     <h2>
       Download these slides<br>
-      to try it yourself.
+      to try things yourself.
     </h2>
     <figure>
       <img src="images/qr-slides.svg">
@@ -1346,30 +1343,17 @@ LIMIT 10</code></pre>
         The <a href="#sparql-protocol">SPARQL protocol</a>
         is a <a href="../web-apis/#definition">Web API</a> definition<br>
         for querying in the SPARQL language over HTTP.
+      </li>
+      <li class="next">
+        Usage of language is independent of protocol.
         <ul>
           <li>
-            A <em>SPARQL endpoint</em> executes SPARQL queries sent by clients<br>
-            through HTTP, and replies with their results.
+            We can do SPARQL queries
+            without SPARQL endpoints!
           </li>
         </ul>
       </li>
     </ul>
-  </div>
-
-  <div class="slide" id="client-side">
-    <h2>
-      We can separate language from API:<br>
-      this query runs partially <em>client-side</em>.
-    </h2>
-    <iframe class="query-client" src="query-client/#datasources=https%3A%2F%2Ffragments.dbpedia.org%2F2016-04%2Fen&query=SELECT%20*%20%7B%0A%20%20%3Fperson%20a%20dbo%3APerson%3B%0A%20%20%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname.%0A%7D%0ALIMIT%2010"></iframe>
-  </div>
-
-  <div class="slide" id="multiple-sources">
-    <h2>
-      The client-side engine especially shines<br>
-      when executing <em>cross-source</em> queries.
-    </h2>
-    <iframe class="query-client" src="query-client/#datasources=https%3A%2F%2Ffragments.dbpedia.org%2F2016-04%2Fen;https%3A%2F%2Fdata.linkeddatafragments.org%2Fviaf;https%3A%2F%2Fdata.linkeddatafragments.org%2Fharvard&query=SELECT%20%3Fperson%20%3Fname%20%3Fbook%20%3Ftitle%20%7B%0A%20%20%3Fperson%20dbo%3AbirthPlace%20%5B%20rdfs%3Alabel%20%22Ghent%22%40en%20%5D.%0A%20%20%3FviafID%20schema%3AsameAs%20%3Fperson%3B%0A%20%20%20%20%20%20%20%20%20%20schema%3Aname%20%3Fname.%0A%20%20%3Fbook%20dc%3Acontributor%20%5B%20foaf%3Aname%20%3Fname%20%5D%3B%0A%20%20%20%20%20%20%20%20dc%3Atitle%20%3Ftitle.%0A%7D"></iframe>
   </div>
 
   <div class="slide" id="sparql-select-example">
@@ -1379,10 +1363,11 @@ LIMIT 10</code></pre>
     </h2>
     <pre><code><span class="comment">PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;</span>
 <span class="comment">PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;</span>
+
 SELECT ?name ?person WHERE {
-  ?person a dbo:Artist.
+<strong>  ?person a dbo:Artist.
   ?person foaf:name ?name.
-  ?person dbo:influencedBy dbr:Pablo_Picasso.
+  ?person dbo:influencedBy dbr:Pablo_Picasso.</strong>
 }</code></pre>
   </div>
 
@@ -1404,8 +1389,8 @@ SELECT ?name ?person WHERE {
 
   <div class="slide" id="sparql-select-client">
     <h2>
-      This <code>SELECT</code> query finds<br>
-      artists influenced by Picasso.
+      A <code>SELECT</code> query<br>
+      returns the variable mappings.
     </h2>
     <iframe class="query-client" src="query-client/#datasources=https%3A%2F%2Ffragments.dbpedia.org%2F2016-04%2Fen&query=SELECT%20%3Fname%20%3Fperson%20WHERE%20%7B%0A%20%20%3Fperson%20a%20dbo%3AArtist.%0A%20%20%3Fperson%20foaf%3Aname%20%3Fname.%0A%20%20%3Fperson%20dbo%3AinfluencedBy%20dbp%3APablo_Picasso.%0A%7D"></iframe>
   </div>
@@ -1444,9 +1429,25 @@ SELECT ?name ?person WHERE {
 
   <div class="quiz slide" id="no-spouse">
     <h2>
-      Does the <code>null</code> for <code>?spouse</code> mean<br>
-      that Charles Sheeler is a <code>ex:Single</code>?
+      Does the <code>null</code> for <code>?spouse</code><br>
+      make <em>Charles Sheeler</em> an <code>ex:Single</code>?
     </h2>
+  </div>
+
+  <div class="slide" id="client-side">
+    <h2>
+      We can separate language from API:<br>
+      this query runs partially <em>client-side</em>.
+    </h2>
+    <iframe class="query-client" src="query-client/#datasources=https%3A%2F%2Ffragments.dbpedia.org%2F2016-04%2Fen&query=SELECT%20*%20%7B%0A%20%20%3Fperson%20a%20dbo%3APerson%3B%0A%20%20%20%20%20%20%20%20%20%20rdfs%3Alabel%20%3Fname.%0A%7D%0ALIMIT%2010"></iframe>
+  </div>
+
+  <div class="slide" id="multiple-sources">
+    <h2>
+      The client-side engine especially shines<br>
+      when executing <em>cross-source</em> queries.
+    </h2>
+    <iframe class="query-client" src="query-client/#datasources=https%3A%2F%2Ffragments.dbpedia.org%2F2016-04%2Fen;https%3A%2F%2Fdata.linkeddatafragments.org%2Fviaf;https%3A%2F%2Fdata.linkeddatafragments.org%2Fharvard&query=SELECT%20%3Fperson%20%3Fname%20%3Fbook%20%3Ftitle%20%7B%0A%20%20%3Fperson%20dbo%3AbirthPlace%20%5B%20rdfs%3Alabel%20%22Ghent%22%40en%20%5D.%0A%20%20%3FviafID%20schema%3AsameAs%20%3Fperson%3B%0A%20%20%20%20%20%20%20%20%20%20schema%3Aname%20%3Fname.%0A%20%20%3Fbook%20dc%3Acontributor%20%5B%20foaf%3Aname%20%3Fname%20%5D%3B%0A%20%20%20%20%20%20%20%20dc%3Atitle%20%3Ftitle.%0A%7D"></iframe>
   </div>
 
   <div class="task slide" id="task-query">
