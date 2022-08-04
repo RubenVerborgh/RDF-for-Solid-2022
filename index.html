@@ -533,7 +533,7 @@ dbr:Tim_Berners-Lee schema:givenName "Tim";
     </h2>
     <pre><code><span class="comment">// Retrieve a JSON-LD document</span>
 <strong>const</strong> response = <strong>await</strong> fetch('https://pod.example/contacts',
-    { 'Content-Type': 'application/ld+json' });
+    { 'Accept': 'application/ld+json' });
 <strong>const</strong> contacts = <strong>await</strong> response.json();
 
 <span class="comment">// Print the name of the first contact</span>
