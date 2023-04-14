@@ -1485,6 +1485,32 @@ SELECT ?name ?person WHERE {
     </ol>
   </div>
 
+  <div class="slide" id="task-query-hints">
+    <h2>
+      Below are some useful hints<br>
+      for the query task.
+    </h2>
+    <ul>
+      <li>
+        Restart your SPARQL endpoint after<br>
+        you’ve changed a Turtle source file.
+        <ul>
+          <li>Query changes do not require reloading.</li>
+        </ul>
+      </li>
+      <li>
+        Send queries to
+        <code>http://localhost:3000/dataset/sparql?query={SPARQL}</code>
+        <ul>
+          <li>
+            From the command-line:<br>
+            <code>curl http://localhost:3000/dataset/sparql -G --data-urlencode query@query.sparql</code>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
   <div class="toc slide" id="recap">
     <ul>
       <li><a href="#toc-rdf">RDF &amp; Solid</a></li>
