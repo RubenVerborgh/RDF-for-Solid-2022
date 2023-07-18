@@ -4,7 +4,7 @@ FROM swipl:latest
 WORKDIR /src
 RUN apt-get -y update
 RUN apt-get -y install git
-RUN git clone --depth=1 https://github.com/josd/eye.git
+RUN git clone --depth=1 https://github.com/eyereasoner/eye.git
 
 # Build
 WORKDIR /src/eye

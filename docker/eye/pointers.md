@@ -1,5 +1,5 @@
 - https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/schema.ttl
   - from https://schema.org/docs/developers.html
-- https://josd.github.io/eye/reasoning/rpo/
-  - https://josd.github.io/eye/reasoning/rpo/rdfs-subClassOf.n3
-  - https://josd.github.io/eye/reasoning/rpo/owl-equivalentClass.n3
+- https://eyereasoner.github.io/eye/reasoning/rpo/
+  - https://eyereasoner.github.io/eye/reasoning/rpo/rdfs-subClassOf.n3
+  - https://eyereasoner.github.io/eye/reasoning/rpo/owl-equivalentClass.n3
